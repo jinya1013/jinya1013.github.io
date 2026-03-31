@@ -1,0 +1,25 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Jinya Sakurai"
+  navbar:
+    right:
+      - text: About
+        href: index.qmd#about
+      - text: News
+        href: index.qmd#news
+      - text: Research
+        href: index.qmd#research
+      - text: Publications
+        href: index.qmd#publications
+      - text: Contact
+        href: index.qmd#contact
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: false
+    smooth-scroll: true

@@ -1,0 +1,110 @@
+---
+title: "Jinya Sakurai"
+page-layout: full
+about:
+  template: solana
+  image: profile.png
+  links:
+    - icon: envelope
+      text: Email
+      href: mailto:sakurai-jinya725@g.ecc.u-tokyo.ac.jp
+    - icon: github
+      text: GitHub
+      href: https://github.com/jinya1013
+    - icon: mortarboard-fill
+      text: Google Scholar
+      href: https://scholar.google.com/citations?view_op=list_works&hl=en&user=8h7YTFMAAAAJ
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/jinya-sakurai/
+    - icon: file-earmark-text
+      text: CV
+      href: cv.pdf
+format:
+  html:
+    title-block-banner: false
+---
+
+## About {#about}
+
+I am an incoming PhD student at College of Computing and Data Science, Nanyang Technological University under the supervision of [Prof. Jaehong Yoon](https://jaehong31.github.io/). I graduated from The University of Tokyo in March 2026 and am currently visiting the Institute for Infocomm Research, A*STAR I2R, under the supervision of [Dr. Xun Xu](https://alex-xun-xu.github.io/).
+
+My research interests center on discrete and continuous diffusion models and their applications, including image generation, language modeling, 3D generation, and text-to-speech systems. More broadly, I am interested in generative modeling, computer vision, 3D world understanding, and statistical machine learning.
+
+Outside research, I enjoy playing badminton. I have brought my badminton racket to every country I have visited, including Sweden, Saudi Arabia, Switzerland, and Singapore.
+
+## News {#news}
+
+- **Aug. 2026**: I am joining Nanyang Technological University as an incoming PhD student under [Prof. Jaehong Yoon](https://jaehong31.github.io/).
+- **Mar. 2026**: I graduated from The University of Tokyo.
+- **Nov. 2025**: I started visiting the Institute for Infocomm Research, A*STAR I2R, under the supervision of [Dr. Xun Xu](https://alex-xun-xu.github.io/).
+- **Feb. 2025**: Our paper *FairT2I: Mitigating Social Bias in Text-to-Image Generation via Large Language Model-Assisted Detection and Attribute Rebalancing* appeared on [arXiv](https://arxiv.org/abs/2502.03826).
+
+
+## Research Experience
+
+### Institute for Infocomm Research, A*STAR I2R
+**Visiting Student with [Dr. Xun Xu](https://alex-xun-xu.github.io/)**  
+Nov. 2025 -- Present
+
+- Working on diffusion models.
+
+### EPFL
+**Summer@EPFL with [Prof. Amir Zamir](https://vilab.epfl.ch/zamir/)**  
+Jul. 2024 -- Nov. 2025
+
+- Developing a transformer pretrained model for 3D modalities using masked token prediction.
+- Training VQ-VAE-style tokenizers for LRM-triplane and Gaussian splatter images.
+
+### KAUST
+**Visiting Student Research Program with [Prof. Bernard Ghanem](https://ivul.kaust.edu.sa/)**  
+Sep. 2023 -- Mar. 2024
+
+- Developed an efficient token-dropping method for VideoMAE using motion vectors from H.264 compression to reduce computation and GPU memory usage.
+
+### Albert Inc.
+**Research Intern**  
+Aug. 2021 -- Jul. 2022
+
+- Developed a surface reconstruction method for noisy point clouds using energy-based generative models to improve robustness.
+
+## Publications {#publications}
+
+### FairT2I: Mitigating Social Bias in Text-to-Image Generation via Large Language Model-Assisted Detection and Attribute Rebalancing
+**arXiv**, 2025 · [arXiv](https://arxiv.org/abs/2502.03826) · [pdf](https://arxiv.org/pdf/2502.03826)
+
+### [Surface Reconstruction from Raw Point Cloud via Energy-Based Models]
+**The 36th Annual Conference of the Japanese Society for Artificial Intelligence**, 2022 · [arXiv](https://arxiv.org/abs/2311.02601) · [pdf](https://arxiv.org/pdf/2311.02601)
+
+
+## Education
+
+### The University of Tokyo
+**Master of Computer Science**  
+2024 -- 2026
+
+### The University of Tokyo
+**Bachelor of Information Science**  
+2019 -- 2023
+
+## Awards/Scholarships
+
+### Shin-nihon Scholarship Foundation Scholar Japan  
+Apr. 2024 -- March. 2026
+
+### World-leading Innovative Graduate Study Program Co-designing Future Society Awardee
+The University of Tokyo  
+Oct. 2024 -- March. 2026
+
+
+## Languages
+
+- Japanese (Native)
+- English (C2)
+
+## Contact {#contact}
+
+- Email: [sakurai-jinya725@g.ecc.u-tokyo.ac.jp](mailto:sakurai-jinya725@g.ecc.u-tokyo.ac.jp)
+- GitHub: [jinya1013](https://github.com/jinya1013)
+- Google Scholar: [Profile](https://scholar.google.com/citations?view_op=list_works&hl=en&user=8h7YTFMAAAAJ)
+- LinkedIn: [jinya-sakurai](https://www.linkedin.com/in/jinya-sakurai/)
