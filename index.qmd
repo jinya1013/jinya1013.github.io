@@ -35,7 +35,7 @@ Outside research, I enjoy playing badminton. I have brought my badminton racket 
 
 ## News {#news}
 
-- **Aug. 2026**: I am joining Nanyang Technological University as an incoming PhD student under [Prof. Jaehong Yoon](https://jaehong31.github.io/).
+- **Aug. 2026**: I am joining Nanyang Technological University as an incoming PhD student under [Prof. Jaehong Yoon](https://jaehong31.github.io/)!
 - **Mar. 2026**: I graduated from The University of Tokyo.
 - **Nov. 2025**: I started visiting the Institute for Infocomm Research, A*STAR I2R, under the supervision of [Dr. Xun Xu](https://alex-xun-xu.github.io/).
 - **Feb. 2025**: Our paper *FairT2I: Mitigating Social Bias in Text-to-Image Generation via Large Language Model-Assisted Detection and Attribute Rebalancing* appeared on [arXiv](https://arxiv.org/abs/2502.03826).
