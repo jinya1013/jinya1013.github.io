@@ -99,6 +99,102 @@ main.content {
   max-width: 980px;
 }
 
+.news-list {
+  margin-top: 1.4rem;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: 0 12px 35px rgba(30, 50, 90, 0.06);
+}
+
+.news-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: center;
+  padding: 1.05rem 1.25rem;
+}
+
+.news-item + .news-item {
+  border-top: 1px solid var(--line);
+}
+
+.news-item::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 3px;
+  content: "";
+  background: transparent;
+}
+
+.news-item.news-latest {
+  background: linear-gradient(90deg, rgba(238, 242, 255, 0.9), rgba(255, 255, 255, 0));
+}
+
+.news-item.news-latest::before {
+  background: var(--accent);
+}
+
+.news-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 4.6rem;
+  min-height: 3.7rem;
+  padding: 0.45rem 0.55rem;
+  color: var(--accent-dark);
+  line-height: 1;
+  background: #f5f7ff;
+  border: 1px solid #dce3fb;
+  border-radius: 12px;
+}
+
+.news-latest .news-date {
+  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 7px 16px rgba(63, 99, 211, 0.24);
+}
+
+.news-month {
+  font-size: 0.7rem;
+  font-weight: 850;
+  letter-spacing: 0.15em;
+}
+
+.news-year {
+  margin-top: 0.28rem;
+  font-size: 1.08rem;
+  font-weight: 780;
+  letter-spacing: -0.02em;
+}
+
+.news-date p,
+.news-content p {
+  margin: 0;
+}
+
+.news-date p {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.news-content {
+  color: #475569;
+  line-height: 1.65;
+}
+
+.news-content a {
+  font-weight: 600;
+  text-underline-offset: 0.18em;
+}
+
 .timeline {
   position: relative;
   margin-top: 1.6rem;
@@ -295,6 +391,12 @@ main.content {
 
   .timeline {
     padding-left: 1.25rem;
+  }
+
+  .news-item {
+    grid-template-columns: 4.6rem minmax(0, 1fr);
+    gap: 0.85rem;
+    padding: 1rem;
   }
 
   .timeline-item {
