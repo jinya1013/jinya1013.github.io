@@ -1,45 +1,66 @@
 [
   {
+    "objectID": "publications.html",
+    "href": "publications.html",
+    "title": "Publications",
+    "section": "",
+    "text": "RESEARCH OUTPUT\n\nSelected papers and accompanying resources. Links to project pages, code, and papers are shown when publicly available."
+  },
+  {
+    "objectID": "publications.html#section",
+    "href": "publications.html#section",
+    "title": "Publications",
+    "section": "2026",
+    "text": "2026\n\n\nJOURNALTMLR 2026\n\n\nFairT2I: Latent Variable Guidance for Training-Free Bias Mitigation with LLM-Assisted Bias Detection\nJinya Sakurai, Yuki Koyama, Issei Sato\nFairT2I uses large language models to detect potential social bias in text-to-image generation and rebalances sensitive attributes while preserving generation quality.\n\narXiv Paper Proceedings \n\n\n\n\n\nPREPRINT2026\n\n\nOmniDiMM: Bridging 1D, 2D, and 3D with Any-to-Any Multimodal Modeling\nJason Toskov, Oriol Barbany, Rishubh Singh*, Jinya Sakurai, Efe Tarhan, Oğuzhan Fatih Kar, Roman Bachmann, Amir Zadeh, Jesse Allardice, Chuan Li, Carme Torras, Afshin Dehghan, Amir Zamir\nAn any-to-any multimodal model that bridges 1D, 2D, and 3D representations for generation, retrieval, and object decomposition across text, images, and 3D modalities.\n\nProject Paper \n\n* Equal contribution"
+  },
+  {
+    "objectID": "publications.html#section-1",
+    "href": "publications.html#section-1",
+    "title": "Publications",
+    "section": "2022",
+    "text": "2022\n\n\nCONFERENCEJSAI 2022\n\n\nSurface Reconstruction from Raw Point Cloud via Energy-Based Models\nJinya Sakurai, Ryutaro Yamauchi, Ryo Furukawa, Tatsushi Matsubayashi\nAn energy-based approach to learning implicit surface representations from raw point clouds, designed to remain robust in the presence of point noise.\n\narXiv Paper Proceedings \n\n\n\n\n Project and GitHub buttons can be added to the same link row whenever those resources become public."
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Jinya Sakurai",
     "section": "",
-    "text": "I am an incoming PhD student at College of Computing and Data Science, Nanyang Technological University under the supervision of Prof. Jaehong Yoon. I graduated from The University of Tokyo in March 2026 and am currently visiting the Institute for Infocomm Research, A*STAR I2R, under the supervision of Dr. Xun Xu.\nMy research interests center on discrete and continuous diffusion models and their applications, including image generation, language modeling, 3D generation, and text-to-speech systems. More broadly, I am interested in generative modeling, computer vision, 3D world understanding, and statistical machine learning.\nOutside research, I enjoy playing badminton. I have brought my badminton racket to every country I have visited, including Sweden, Saudi Arabia, Switzerland, and Singapore."
+    "text": "I am a PhD student at College of Computing and Data Science, Nanyang Technological University under the supervision of Prof. Jaehong Yoon. I graduated from The University of Tokyo in March 2026. From November 2025 to May 2026, I was a visiting student at the Institute for Infocomm Research, A*STAR I2R, under the supervision of Dr. Xun Xu.\nMy research interests center on discrete and continuous diffusion models and their applications, including image generation, language modeling, 3D generation, and text-to-speech systems. More broadly, I am interested in generative modeling, computer vision, 3D world understanding, and statistical machine learning.\nOutside research, I enjoy playing badminton. I have brought my badminton racket to every country I have visited, including Sweden, Saudi Arabia, Switzerland, and Singapore."
   },
   {
     "objectID": "index.html#about",
     "href": "index.html#about",
     "title": "Jinya Sakurai",
     "section": "",
-    "text": "I am an incoming PhD student at College of Computing and Data Science, Nanyang Technological University under the supervision of Prof. Jaehong Yoon. I graduated from The University of Tokyo in March 2026 and am currently visiting the Institute for Infocomm Research, A*STAR I2R, under the supervision of Dr. Xun Xu.\nMy research interests center on discrete and continuous diffusion models and their applications, including image generation, language modeling, 3D generation, and text-to-speech systems. More broadly, I am interested in generative modeling, computer vision, 3D world understanding, and statistical machine learning.\nOutside research, I enjoy playing badminton. I have brought my badminton racket to every country I have visited, including Sweden, Saudi Arabia, Switzerland, and Singapore."
+    "text": "I am a PhD student at College of Computing and Data Science, Nanyang Technological University under the supervision of Prof. Jaehong Yoon. I graduated from The University of Tokyo in March 2026. From November 2025 to May 2026, I was a visiting student at the Institute for Infocomm Research, A*STAR I2R, under the supervision of Dr. Xun Xu.\nMy research interests center on discrete and continuous diffusion models and their applications, including image generation, language modeling, 3D generation, and text-to-speech systems. More broadly, I am interested in generative modeling, computer vision, 3D world understanding, and statistical machine learning.\nOutside research, I enjoy playing badminton. I have brought my badminton racket to every country I have visited, including Sweden, Saudi Arabia, Switzerland, and Singapore."
   },
   {
     "objectID": "index.html#news",
     "href": "index.html#news",
     "title": "Jinya Sakurai",
     "section": "News",
-    "text": "News\n\nAug. 2026: I am joining Nanyang Technological University as an incoming PhD student under Prof. Jaehong Yoon.\nMar. 2026: I graduated from The University of Tokyo.\nNov. 2025: I started visiting the Institute for Infocomm Research, A*STAR I2R, under the supervision of Dr. Xun Xu.\nFeb. 2025: Our paper FairT2I: Mitigating Social Bias in Text-to-Image Generation via Large Language Model-Assisted Detection and Attribute Rebalancing appeared on arXiv."
+    "text": "News\n\nAug. 2026: I started my PhD at Nanyang Technological University under the supervision of Prof. Jaehong Yoon!\nJul. 2026: Our paper FairT2I was accepted to Transactions on Machine Learning Research (TMLR)! [Proceedings]\nMay. 2026: Our paper OmniDiMM: Bridging 1D, 2D, and 3D with Any-to-Any Multimodal Modeling appeared as a preprint. [Project] [Paper]\nMar. 2026: I graduated from The University of Tokyo.\nNov. 2025: I started visiting the Institute for Infocomm Research, A*STAR I2R, under the supervision of Dr. Xun Xu.\nFeb. 2025: Our paper FairT2I: Mitigating Social Bias in Text-to-Image Generation via Large Language Model-Assisted Detection and Attribute Rebalancing appeared on arXiv."
   },
   {
-    "objectID": "index.html#research-experience",
-    "href": "index.html#research-experience",
+    "objectID": "index.html#research",
+    "href": "index.html#research",
     "title": "Jinya Sakurai",
     "section": "Research Experience",
-    "text": "Research Experience\n\nInstitute for Infocomm Research, A*STAR I2R\nVisiting Student with Dr. Xun Xu\nNov. 2025 – Present\n\nWorking on diffusion models.\n\n\n\nEPFL\nSummer@EPFL with Prof. Amir Zamir\nJul. 2024 – Nov. 2025\n\nDeveloping a transformer pretrained model for 3D modalities using masked token prediction.\nTraining VQ-VAE-style tokenizers for LRM-triplane and Gaussian splatter images.\n\n\n\nKAUST\nVisiting Student Research Program with Prof. Bernard Ghanem\nSep. 2023 – Mar. 2024\n\nDeveloped an efficient token-dropping method for VideoMAE using motion vectors from H.264 compression to reduce computation and GPU memory usage.\n\n\n\nAlbert Inc.\nResearch Intern\nAug. 2021 – Jul. 2022\n\nDeveloped a surface reconstruction method for noisy point clouds using energy-based generative models to improve robustness."
+    "text": "Research Experience\n\n\nInstitute for Infocomm Research, A*STAR I2R\nVisiting Student with Dr. Xun Xu\nNov. 2025 – May 2026\n\nWorking on diffusion models.\n\n\n\nEPFL\nSummer@EPFL with Prof. Amir Zamir\nJul. 2024 – Nov. 2025\n\nDeveloping a transformer pretrained model for 3D modalities using masked token prediction.\nTraining VQ-VAE-style tokenizers for LRM-triplane and Gaussian splatter images.\n\n\n\nKAUST\nVisiting Student Research Program with Prof. Bernard Ghanem\nSep. 2023 – Mar. 2024\n\nDeveloped an efficient token-dropping method for VideoMAE using motion vectors from H.264 compression to reduce computation and GPU memory usage.\n\n\n\nAlbert Inc.\nResearch Intern\nAug. 2021 – Jul. 2022\n\nDeveloped a surface reconstruction method for noisy point clouds using energy-based generative models to improve robustness."
   },
   {
     "objectID": "index.html#publications",
     "href": "index.html#publications",
     "title": "Jinya Sakurai",
     "section": "Publications",
-    "text": "Publications\n\nFairT2I: Mitigating Social Bias in Text-to-Image Generation via Large Language Model-Assisted Detection and Attribute Rebalancing\narXiv, 2025 · arXiv · pdf\n\n\n[Surface Reconstruction from Raw Point Cloud via Energy-Based Models]\nThe 36th Annual Conference of the Japanese Society for Artificial Intelligence, 2022 · arXiv · pdf"
+    "text": "Publications\nMy work spans generative modeling, responsible text-to-image generation, and 3D representation learning. See the dedicated page for papers, abstracts, and resource links.\nView all publications"
   },
   {
     "objectID": "index.html#education",
     "href": "index.html#education",
     "title": "Jinya Sakurai",
     "section": "Education",
-    "text": "Education\n\nThe University of Tokyo\nMaster of Computer Science\n2024 – 2026\n\n\nThe University of Tokyo\nBachelor of Information Science\n2019 – 2023"
+    "text": "Education\n\nNanyang Technological University\nPhD in Computer Science\nAug. 2026 – Present\n\n\nThe University of Tokyo\nMaster of Computer Science\nApr. 2024 – Mar. 2026\n\n\nThe University of Tokyo\nBachelor of Information Science\nApr. 2019 – Sep. 2023"
   },
   {
     "objectID": "index.html#awardsscholarships",
@@ -60,6 +81,6 @@
     "href": "index.html#contact",
     "title": "Jinya Sakurai",
     "section": "Contact",
-    "text": "Contact\n\nEmail: sakurai-jinya725@g.ecc.u-tokyo.ac.jp\nGitHub: jinya1013\nGoogle Scholar: Profile\nLinkedIn: jinya-sakurai"
+    "text": "Contact\n\nEmail: jinya001@e.ntu.edu.sg\nGitHub: jinya1013\nGoogle Scholar: Profile\nLinkedIn: jinya-sakurai"
   }
 ]

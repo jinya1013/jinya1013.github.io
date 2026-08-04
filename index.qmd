@@ -7,7 +7,7 @@ about:
   links:
     - icon: envelope
       text: Email
-      href: mailto:sakurai-jinya725@g.ecc.u-tokyo.ac.jp
+      href: mailto:jinya001@e.ntu.edu.sg
     - icon: github
       text: GitHub
       href: https://github.com/jinya1013
@@ -27,7 +27,7 @@ format:
 
 ## About {#about}
 
-I am an incoming PhD student at College of Computing and Data Science, Nanyang Technological University under the supervision of [Prof. Jaehong Yoon](https://jaehong31.github.io/). I graduated from The University of Tokyo in March 2026 and am currently visiting the Institute for Infocomm Research, A*STAR I2R, under the supervision of [Dr. Xun Xu](https://alex-xun-xu.github.io/).
+I am a PhD student at College of Computing and Data Science, Nanyang Technological University under the supervision of [Prof. Jaehong Yoon](https://jaehong31.github.io/). I graduated from The University of Tokyo in March 2026. From November 2025 to May 2026, I was a visiting student at the Institute for Infocomm Research, A*STAR I2R, under the supervision of [Dr. Xun Xu](https://alex-xun-xu.github.io/).
 
 My research interests center on discrete and continuous diffusion models and their applications, including image generation, language modeling, 3D generation, and text-to-speech systems. More broadly, I am interested in generative modeling, computer vision, 3D world understanding, and statistical machine learning.
 
@@ -35,57 +35,70 @@ Outside research, I enjoy playing badminton. I have brought my badminton racket 
 
 ## News {#news}
 
-- **Aug. 2026**: I am joining Nanyang Technological University as an incoming PhD student under [Prof. Jaehong Yoon](https://jaehong31.github.io/)!
+- **Aug. 2026**: I started my PhD at Nanyang Technological University under the supervision of [Prof. Jaehong Yoon](https://jaehong31.github.io/)!
+- **Jul. 2026**: Our paper *FairT2I* was accepted to Transactions on Machine Learning Research (TMLR)! [[Proceedings](https://openreview.net/forum?id=WHYE1WjMYf)]
+- **May. 2026**: Our paper *OmniDiMM: Bridging 1D, 2D, and 3D with Any-to-Any Multimodal Modeling* appeared as a preprint. [[Project](https://omnidimm.epfl.ch/)] [[Paper](https://omnidimm.epfl.ch/assets/OmniDiMM_ArXiv_Release.pdf)]
 - **Mar. 2026**: I graduated from The University of Tokyo.
 - **Nov. 2025**: I started visiting the Institute for Infocomm Research, A*STAR I2R, under the supervision of [Dr. Xun Xu](https://alex-xun-xu.github.io/).
 - **Feb. 2025**: Our paper *FairT2I: Mitigating Social Bias in Text-to-Image Generation via Large Language Model-Assisted Detection and Attribute Rebalancing* appeared on [arXiv](https://arxiv.org/abs/2502.03826).
 
 
-## Research Experience
+## Research Experience {#research}
 
+::: {.timeline}
+::: {.timeline-item}
 ### Institute for Infocomm Research, A*STAR I2R
 **Visiting Student with [Dr. Xun Xu](https://alex-xun-xu.github.io/)**  
-Nov. 2025 -- Present
+Nov. 2025 -- May 2026
 
 - Working on diffusion models.
+:::
 
+::: {.timeline-item}
 ### EPFL
 **Summer@EPFL with [Prof. Amir Zamir](https://vilab.epfl.ch/zamir/)**  
 Jul. 2024 -- Nov. 2025
 
 - Developing a transformer pretrained model for 3D modalities using masked token prediction.
 - Training VQ-VAE-style tokenizers for LRM-triplane and Gaussian splatter images.
+:::
 
+::: {.timeline-item}
 ### KAUST
 **Visiting Student Research Program with [Prof. Bernard Ghanem](https://ivul.kaust.edu.sa/)**  
 Sep. 2023 -- Mar. 2024
 
 - Developed an efficient token-dropping method for VideoMAE using motion vectors from H.264 compression to reduce computation and GPU memory usage.
+:::
 
+::: {.timeline-item}
 ### Albert Inc.
 **Research Intern**  
 Aug. 2021 -- Jul. 2022
 
 - Developed a surface reconstruction method for noisy point clouds using energy-based generative models to improve robustness.
+:::
+:::
 
 ## Publications {#publications}
 
-### FairT2I: Mitigating Social Bias in Text-to-Image Generation via Large Language Model-Assisted Detection and Attribute Rebalancing
-**arXiv**, 2025 · [arXiv](https://arxiv.org/abs/2502.03826) · [pdf](https://arxiv.org/pdf/2502.03826)
+My work spans generative modeling, responsible text-to-image generation, and 3D representation learning. See the dedicated page for papers, abstracts, and resource links.
 
-### [Surface Reconstruction from Raw Point Cloud via Energy-Based Models]
-**The 36th Annual Conference of the Japanese Society for Artificial Intelligence**, 2022 · [arXiv](https://arxiv.org/abs/2311.02601) · [pdf](https://arxiv.org/pdf/2311.02601)
-
+<a class="section-cta" href="publications.html">View all publications <i class="bi bi-arrow-right"></i></a>
 
 ## Education
 
+### Nanyang Technological University
+**PhD in Computer Science**  
+Aug. 2026 -- Present
+
 ### The University of Tokyo
 **Master of Computer Science**  
-2024 -- 2026
+Apr. 2024 -- Mar. 2026
 
 ### The University of Tokyo
 **Bachelor of Information Science**  
-2019 -- 2023
+Apr. 2019 -- Sep. 2023
 
 ## Awards/Scholarships
 
@@ -104,7 +117,7 @@ Oct. 2024 -- March. 2026
 
 ## Contact {#contact}
 
-- Email: [sakurai-jinya725@g.ecc.u-tokyo.ac.jp](mailto:sakurai-jinya725@g.ecc.u-tokyo.ac.jp)
+- Email: [jinya001@e.ntu.edu.sg](mailto:jinya001@e.ntu.edu.sg)
 - GitHub: [jinya1013](https://github.com/jinya1013)
 - Google Scholar: [Profile](https://scholar.google.com/citations?view_op=list_works&hl=en&user=8h7YTFMAAAAJ)
 - LinkedIn: [jinya-sakurai](https://www.linkedin.com/in/jinya-sakurai/)

@@ -1,0 +1,88 @@
+---
+title: "Publications"
+subtitle: "Research in generative modeling, computer vision, and 3D understanding."
+page-layout: full
+format:
+  html:
+    title-block-banner: false
+---
+
+<div class="publication-intro">
+  <span class="eyebrow">RESEARCH OUTPUT</span>
+  <p>Selected papers and accompanying resources. Links to project pages, code, and papers are shown when publicly available.</p>
+</div>
+
+## 2026
+
+::: {.publication-card}
+::: {.publication-meta}
+<span class="publication-type">JOURNAL</span><span>TMLR 2026</span>
+:::
+
+### FairT2I: Latent Variable Guidance for Training-Free Bias Mitigation with LLM-Assisted Bias Detection
+
+**Jinya Sakurai**, Yuki Koyama, Issei Sato
+
+FairT2I uses large language models to detect potential social bias in text-to-image generation and rebalances sensitive attributes while preserving generation quality.
+
+::: {.publication-links}
+<a class="publication-link" href="https://arxiv.org/abs/2502.03826"><i class="bi bi-journal-text"></i><span>arXiv</span></a>
+<a class="publication-link" href="https://arxiv.org/pdf/2502.03826"><i class="bi bi-file-earmark-pdf"></i><span>Paper</span></a>
+<a class="publication-link" href="https://openreview.net/forum?id=WHYE1WjMYf"><i class="bi bi-building"></i><span>Proceedings</span></a>
+<!-- Add when available:
+<a class="publication-link" href="PROJECT_URL"><i class="bi bi-globe2"></i><span>Project</span></a>
+<a class="publication-link" href="GITHUB_URL"><i class="bi bi-github"></i><span>GitHub</span></a>
+-->
+:::
+:::
+
+::: {.publication-card}
+::: {.publication-meta}
+<span class="publication-type">PREPRINT</span><span>2026</span>
+:::
+
+### OmniDiMM: Bridging 1D, 2D, and 3D with Any-to-Any Multimodal Modeling
+
+Jason Toskov<sup>*</sup>, Oriol Barbany<sup>*</sup>, Rishubh Singh<sup>*</sup>, **Jinya Sakurai**, Efe Tarhan, Oğuzhan Fatih Kar, Roman Bachmann, Amir Zadeh, Jesse Allardice, Chuan Li, Carme Torras, Afshin Dehghan, Amir Zamir
+
+An any-to-any multimodal model that bridges 1D, 2D, and 3D representations for generation, retrieval, and object decomposition across text, images, and 3D modalities.
+
+::: {.publication-links}
+<a class="publication-link" href="https://omnidimm.epfl.ch/"><i class="bi bi-globe2"></i><span>Project</span></a>
+<a class="publication-link" href="https://omnidimm.epfl.ch/assets/OmniDiMM_ArXiv_Release.pdf"><i class="bi bi-file-earmark-pdf"></i><span>Paper</span></a>
+<!-- Add when available:
+<a class="publication-link" href="GITHUB_URL"><i class="bi bi-github"></i><span>GitHub</span></a>
+-->
+:::
+
+<small><sup>*</sup> Equal contribution</small>
+:::
+
+## 2022
+
+::: {.publication-card}
+::: {.publication-meta}
+<span class="publication-type">CONFERENCE</span><span>JSAI 2022</span>
+:::
+
+### Surface Reconstruction from Raw Point Cloud via Energy-Based Models
+
+**Jinya Sakurai**, Ryutaro Yamauchi, Ryo Furukawa, Tatsushi Matsubayashi
+
+An energy-based approach to learning implicit surface representations from raw point clouds, designed to remain robust in the presence of point noise.
+
+::: {.publication-links}
+<a class="publication-link" href="https://arxiv.org/abs/2311.02601"><i class="bi bi-journal-text"></i><span>arXiv</span></a>
+<a class="publication-link" href="https://arxiv.org/pdf/2311.02601"><i class="bi bi-file-earmark-pdf"></i><span>Paper</span></a>
+<a class="publication-link" href="https://www.jstage.jst.go.jp/article/pjsai/JSAI2022/0/JSAI2022_4Yin252/_article/-char/en"><i class="bi bi-building"></i><span>Proceedings</span></a>
+<!-- Add when available:
+<a class="publication-link" href="PROJECT_URL"><i class="bi bi-globe2"></i><span>Project</span></a>
+<a class="publication-link" href="GITHUB_URL"><i class="bi bi-github"></i><span>GitHub</span></a>
+-->
+:::
+:::
+
+<div class="publication-note">
+  <i class="bi bi-info-circle"></i>
+  <span>Project and GitHub buttons can be added to the same link row whenever those resources become public.</span>
+</div>

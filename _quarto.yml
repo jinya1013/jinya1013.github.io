@@ -4,7 +4,9 @@ project:
 
 website:
   title: "Jinya Sakurai"
+  page-navigation: true
   navbar:
+    pinned: true
     right:
       - text: About
         href: index.qmd#about
@@ -13,7 +15,7 @@ website:
       - text: Research
         href: index.qmd#research
       - text: Publications
-        href: index.qmd#publications
+        href: publications.qmd
       - text: Contact
         href: index.qmd#contact
 
@@ -23,3 +25,4 @@ format:
     css: styles.css
     toc: false
     smooth-scroll: true
+    link-external-newwindow: true
