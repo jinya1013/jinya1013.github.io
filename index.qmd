@@ -41,6 +41,15 @@ Outside research, I enjoy playing badminton. I have brought my badminton racket 
 <span class="news-month">AUG</span><span class="news-year">2026</span>
 :::
 ::: {.news-content}
+Our paper *Simplex Relaxation for Discrete Diffusion* appeared on [arXiv](https://arxiv.org/abs/2608.10615).
+:::
+:::
+
+::: {.news-item}
+::: {.news-date}
+<span class="news-month">AUG</span><span class="news-year">2026</span>
+:::
+::: {.news-content}
 Our paper *Test-Time Scaling for Safe Text-Guided Image Generation via Intermediate Clean Estimates* appeared on [arXiv](https://arxiv.org/abs/2608.03284).
 :::
 :::

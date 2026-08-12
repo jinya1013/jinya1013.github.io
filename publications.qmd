@@ -19,6 +19,27 @@ format:
 <span class="publication-type">PREPRINT</span><span>2026</span>
 :::
 
+### Simplex Relaxation for Discrete Diffusion
+
+**Jinya Sakurai**, Patrick Pynadath, Satoshi Hayakawa, Jaehong Yoon, Xulei Yang, Nancy F. Chen, Xun Xu
+
+Simplax augments uniform discrete diffusion with an exact Dirichlet–categorical coupling, enabling a tractable reverse-bridge objective and stochastic sampler while preserving the original categorical corruption process.
+
+::: {.publication-links}
+<a class="publication-link" href="https://arxiv.org/abs/2608.10615"><i class="bi bi-journal-text"></i><span>arXiv</span></a>
+<a class="publication-link" href="https://arxiv.org/pdf/2608.10615"><i class="bi bi-file-earmark-pdf"></i><span>Paper</span></a>
+<!-- Add when available:
+<a class="publication-link" href="PROJECT_URL"><i class="bi bi-globe2"></i><span>Project</span></a>
+<a class="publication-link" href="GITHUB_URL"><i class="bi bi-github"></i><span>GitHub</span></a>
+-->
+:::
+:::
+
+::: {.publication-card}
+::: {.publication-meta}
+<span class="publication-type">PREPRINT</span><span>2026</span>
+:::
+
 ### Test-Time Scaling for Safe Text-Guided Image Generation via Intermediate Clean Estimates
 
 **Jinya Sakurai**, Shueicheng Yan, Xun Xu
