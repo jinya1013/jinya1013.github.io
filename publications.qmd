@@ -26,10 +26,10 @@ format:
 Simplax augments uniform discrete diffusion with an exact Dirichlet–categorical coupling, enabling a tractable reverse-bridge objective and stochastic sampler while preserving the original categorical corruption process.
 
 ::: {.publication-links}
-<a class="publication-link" href="https://arxiv.org/abs/2608.10615"><i class="bi bi-journal-text"></i><span>arXiv</span></a>
+<a class="publication-link" href="simplax/"><i class="bi bi-globe2"></i><span>Project</span></a>
+<a class="publication-link" href="https://arxiv.org/abs/2608.10615"><i class="ai ai-arxiv"></i><span>arXiv</span></a>
 <a class="publication-link" href="https://arxiv.org/pdf/2608.10615"><i class="bi bi-file-earmark-pdf"></i><span>Paper</span></a>
 <!-- Add when available:
-<a class="publication-link" href="PROJECT_URL"><i class="bi bi-globe2"></i><span>Project</span></a>
 <a class="publication-link" href="GITHUB_URL"><i class="bi bi-github"></i><span>GitHub</span></a>
 -->
 :::
@@ -47,7 +47,7 @@ Simplax augments uniform discrete diffusion with an exact Dirichlet–categorica
 A weight-preserving test-time defense for text-to-image diffusion models that detects prohibited concepts from intermediate clean image estimates and intervenes through structured low-rank residual optimization in the text-conditioning space.
 
 ::: {.publication-links}
-<a class="publication-link" href="https://arxiv.org/abs/2608.03284"><i class="bi bi-journal-text"></i><span>arXiv</span></a>
+<a class="publication-link" href="https://arxiv.org/abs/2608.03284"><i class="ai ai-arxiv"></i><span>arXiv</span></a>
 <a class="publication-link" href="https://arxiv.org/pdf/2608.03284"><i class="bi bi-file-earmark-pdf"></i><span>Paper</span></a>
 <!-- Add when available:
 <a class="publication-link" href="PROJECT_URL"><i class="bi bi-globe2"></i><span>Project</span></a>
@@ -68,7 +68,7 @@ A weight-preserving test-time defense for text-to-image diffusion models that de
 FairT2I uses large language models to detect potential social bias in text-to-image generation and rebalances sensitive attributes while preserving generation quality.
 
 ::: {.publication-links}
-<a class="publication-link" href="https://arxiv.org/abs/2502.03826"><i class="bi bi-journal-text"></i><span>arXiv</span></a>
+<a class="publication-link" href="https://arxiv.org/abs/2502.03826"><i class="ai ai-arxiv"></i><span>arXiv</span></a>
 <a class="publication-link" href="https://arxiv.org/pdf/2502.03826"><i class="bi bi-file-earmark-pdf"></i><span>Paper</span></a>
 <a class="publication-link" href="https://openreview.net/forum?id=WHYE1WjMYf"><i class="bi bi-building"></i><span>Proceedings</span></a>
 <!-- Add when available:
@@ -114,7 +114,7 @@ Accepted to NeurIPS 2026. An any-to-any multimodal model that bridges 1D, 2D, an
 An energy-based approach to learning implicit surface representations from raw point clouds, designed to remain robust in the presence of point noise.
 
 ::: {.publication-links}
-<a class="publication-link" href="https://arxiv.org/abs/2311.02601"><i class="bi bi-journal-text"></i><span>arXiv</span></a>
+<a class="publication-link" href="https://arxiv.org/abs/2311.02601"><i class="ai ai-arxiv"></i><span>arXiv</span></a>
 <a class="publication-link" href="https://arxiv.org/pdf/2311.02601"><i class="bi bi-file-earmark-pdf"></i><span>Paper</span></a>
 <a class="publication-link" href="https://www.jstage.jst.go.jp/article/pjsai/JSAI2022/0/JSAI2022_4Yin252/_article/-char/en"><i class="bi bi-building"></i><span>Proceedings</span></a>
 <!-- Add when available:

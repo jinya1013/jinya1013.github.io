@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Simplax is an exact Dirichlet-categorical augmentation of uniform discrete diffusion.">
+  <meta name="keywords" content="Simplax, discrete diffusion, diffusion language models, simplex relaxation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simplex Relaxation for Discrete Diffusion</title>
+
+  <script>
+    (function () {
+      var savedTheme = window.localStorage.getItem('quarto-color-scheme');
+      document.documentElement.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
+    })();
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/nerfies.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/project.css">
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+</head>
+<body>
+
+<button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme">
+  <span class="theme-toggle-icon" aria-hidden="true"></span>
+  <span class="theme-toggle-label"></span>
+</button>
+
+<section class="hero publication-header">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Simplex Relaxation for Discrete Diffusion</h1>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><a href="../">Jinya Sakurai</a><sup>1,4</sup>,</span>
+            <span class="author-block"><a href="https://patrickpynadath1.github.io">Patrick Pynadath</a><sup>2</sup>,</span>
+            <span class="author-block"><a href="https://satoshi-hayakawa.github.io/">Satoshi Hayakawa</a><sup>3</sup>,</span><br>
+            <span class="author-block"><a href="https://jaehong31.github.io/">Jaehong Yoon</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://dawdleryang.github.io/">Xulei Yang</a><sup>4</sup>,</span>
+            <span class="author-block"><a href="https://sites.google.com/site/nancyfchen">Nancy F. Chen</a><sup>4,5</sup>,</span>
+            <span class="author-block"><a href="https://alex-xun-xu.github.io/">Xun Xu</a><sup>4,5</sup></span>
+          </div>
+
+          <div class="is-size-6 publication-authors affiliations">
+            <span class="author-block"><sup>1</sup>NTU Singapore,</span>
+            <span class="author-block"><sup>2</sup>Purdue University,</span>
+            <span class="author-block"><sup>3</sup>The University of Tokyo,</span>
+            <span class="author-block"><sup>4</sup>IAIC, A*STAR,</span>
+            <span class="author-block"><sup>5</sup>CFAR, A*STAR</span>
+          </div>
+
+          <div class="publication-links">
+            <span class="link-block">
+              <a href="https://arxiv.org/pdf/2608.10615" class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><i class="fas fa-file-pdf" aria-hidden="true"></i></span><span>Paper</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="https://arxiv.org/abs/2608.10615" class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><i class="ai ai-arxiv" aria-hidden="true"></i></span><span>arXiv</span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section teaser">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">TL;DR</h2>
+    <h3 class="subtitle has-text-centered">
+      Simplax enriches uniform discrete diffusion with an exact simplex-valued auxiliary state, enabling Rao–Blackwellized reverse-bridge training and sampling while preserving categorical corruption and token-based denoising.
+    </h3>
+    <figure class="publication-figure">
+      <img src="../assets/simplax/method.webp" alt="Standard discrete diffusion matches one bridge, while Simplax matches all K virtual bridges through a simplex state.">
+      <figcaption>Standard discrete diffusion matches one realized bridge. Simplax marginalizes matching over all <em>K</em> virtual bridge anchors from the same simplex state.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Discrete diffusion models for categorical generation are defined by a corruption kernel, which determines the intermediate state space and the associated reverse prediction problem. We study whether uniform discrete diffusion can be augmented with an explicit continuous state while leaving its categorical corruption process unchanged.
+          </p>
+          <p>
+            We introduce Simplax, an exact Dirichlet–categorical augmentation that couples each corrupted categorical state with an auxiliary simplex-valued variable while preserving uniform diffusion as its categorical marginal. This yields a tractable Rao–Blackwellized reverse-bridge objective and a stochastic reverse sampler, while retaining the corrupted categorical state as the denoiser input.
+          </p>
+          <p>
+            Simplax improves the generative perplexity–entropy tradeoff on unconditional OpenWebText generation. On Sudoku, a model trained exclusively on 30-clue puzzles achieves the highest accuracy among the compared methods across all evaluated clue densities, including the minimum uniquely solvable 17-clue regime, and the highest validity in unconditional generation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">Simplex Relaxation</h2>
+        <div class="content has-text-justified">
+          <p>
+            Simplax couples a corrupted token <em>z</em><sub>t</sub> to an auxiliary simplex state <em>w</em><sub>t</sub> through a shifted Dirichlet conditional. Marginalizing <em>w</em><sub>t</sub> exactly recovers the original uniform categorical process, and decoding from the simplex is ordinary categorical sampling.
+          </p>
+          <p>
+            During training, the denoiser still receives the sampled token. The auxiliary simplex state defines a distribution over all categorical bridge anchors, whose reverse-bridge losses can be marginalized analytically. The same hierarchy gives a reverse sampler that carries simplex information between steps without requiring dense simplex vectors as network inputs.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">OpenWebText Generation</h2>
+    <div class="content has-text-centered section-intro">
+      <p>Simplax lies on or near the lower generative perplexity–entropy envelope across inference budgets. With UDLM initialization, it achieves the strongest matched-entropy perplexity among the compared diffusion methods at low and high NFE under both reported evaluators.</p>
+    </div>
+    <figure class="publication-figure">
+      <img src="../assets/simplax/openwebtext.webp" alt="OpenWebText generative perplexity versus entropy frontiers from 8 to 1024 function evaluations.">
+      <figcaption>Llama-2 7B generative frontiers on OpenWebText. Lower perplexity is better at comparable entropy; the dotted vertical line marks the data entropy.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Sudoku Generation</h2>
+    <div class="content has-text-centered section-intro">
+      <p>All models are trained only on 30-clue puzzles. Simplax obtains the highest conditional accuracy at every tested clue density and reaches 95.30% validity in unconditional generation.</p>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <figure class="publication-figure sudoku-figure">
+          <img src="../assets/simplax/sudoku.webp" alt="Sudoku generations from baseline models and Simplax for the same 25-clue puzzle; only Simplax is valid.">
+          <figcaption>A representative 25-clue puzzle. Blue entries are given clues, black entries match the solution, and red entries are errors. Simplax produces the valid solution.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section bibtex-section">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">BibTeX</h2>
+    <pre><code>@misc{sakurai2026simplex,
+  title         = {Simplex Relaxation for Discrete Diffusion},
+  author        = {Jinya Sakurai and Patrick Pynadath and Satoshi Hayakawa
+                   and Jaehong Yoon and Xulei Yang and Nancy F. Chen and Xun Xu},
+  year          = {2026},
+  eprint        = {2608.10615},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL}
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      Website template adapted from <a href="https://nerfies.github.io/">Nerfies</a> under
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+    </p>
+    <p class="home-link"><a href="../">← Jinya Sakurai</a></p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var toggle = document.getElementById('theme-toggle');
+    var icon = toggle.querySelector('.theme-toggle-icon');
+    var label = toggle.querySelector('.theme-toggle-label');
+
+    function updateToggle() {
+      var isDark = document.documentElement.dataset.theme === 'dark';
+      icon.textContent = isDark ? '☀' : '☾';
+      label.textContent = isDark ? 'Light' : 'Dark';
+      toggle.setAttribute('aria-label', 'Switch to ' + label.textContent.toLowerCase() + ' mode');
+    }
+
+    toggle.addEventListener('click', function () {
+      var nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = nextTheme;
+      window.localStorage.setItem('quarto-color-scheme', nextTheme);
+      updateToggle();
+    });
+
+    updateToggle();
+  })();
+</script>
+
+</body>
+</html>

@@ -108,6 +108,24 @@
     document.body.classList.add("panel-mode");
     sections.forEach((section) => section.classList.add("content-panel"));
 
+    const panelShell = document.querySelector(".quarto-about-solana");
+    const fitPanelToViewport = () => {
+      if (!panelShell) return;
+      const panelTop = Math.max(0, panelShell.getBoundingClientRect().top);
+      panelShell.style.height = `${Math.max(0, window.innerHeight - panelTop)}px`;
+    };
+    let resizeFrame = 0;
+    const schedulePanelFit = () => {
+      cancelAnimationFrame(resizeFrame);
+      resizeFrame = requestAnimationFrame(fitPanelToViewport);
+    };
+    schedulePanelFit();
+    window.addEventListener("resize", schedulePanelFit, { passive: true });
+    const siteHeader = document.getElementById("quarto-header");
+    if (siteHeader && "ResizeObserver" in window) {
+      new ResizeObserver(schedulePanelFit).observe(siteHeader);
+    }
+
     const navLinks = [...document.querySelectorAll(".navbar .nav-link")];
     let activeId = null;
     let transitionId = 0;

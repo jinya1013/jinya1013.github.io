@@ -1,6 +1,10 @@
 project:
   type: website
   output-dir: docs
+  resources:
+    - assets/simplax/**
+    - simplax/index.html
+    - simplax/static/**
 
 website:
   title: "Jinya Sakurai"
@@ -25,6 +29,9 @@ format:
       dark: darkly
       light: cosmo
     css: styles.css
+    include-in-header:
+      - text: |
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
     include-after-body: effects.js
     toc: false
     smooth-scroll: true

@@ -169,7 +169,8 @@ Aug. 2021 -- Jul. 2022
 **Jinya Sakurai**, Patrick Pynadath, Satoshi Hayakawa, Jaehong Yoon, Xulei Yang, Nancy F. Chen, Xun Xu
 
 ::: {.publication-links}
-<a class="publication-link" href="https://arxiv.org/abs/2608.10615"><i class="bi bi-journal-text"></i><span>arXiv</span></a>
+<a class="publication-link" href="simplax/"><i class="bi bi-globe2"></i><span>Project</span></a>
+<a class="publication-link" href="https://arxiv.org/abs/2608.10615"><i class="ai ai-arxiv"></i><span>arXiv</span></a>
 <a class="publication-link" href="https://arxiv.org/pdf/2608.10615"><i class="bi bi-file-earmark-pdf"></i><span>Paper</span></a>
 :::
 :::
@@ -184,7 +185,7 @@ Aug. 2021 -- Jul. 2022
 **Jinya Sakurai**, Shueicheng Yan, Xun Xu
 
 ::: {.publication-links}
-<a class="publication-link" href="https://arxiv.org/abs/2608.03284"><i class="bi bi-journal-text"></i><span>arXiv</span></a>
+<a class="publication-link" href="https://arxiv.org/abs/2608.03284"><i class="ai ai-arxiv"></i><span>arXiv</span></a>
 <a class="publication-link" href="https://arxiv.org/pdf/2608.03284"><i class="bi bi-file-earmark-pdf"></i><span>Paper</span></a>
 :::
 :::
@@ -199,7 +200,7 @@ Aug. 2021 -- Jul. 2022
 **Jinya Sakurai**, Yuki Koyama, Issei Sato
 
 ::: {.publication-links}
-<a class="publication-link" href="https://arxiv.org/abs/2502.03826"><i class="bi bi-journal-text"></i><span>arXiv</span></a>
+<a class="publication-link" href="https://arxiv.org/abs/2502.03826"><i class="ai ai-arxiv"></i><span>arXiv</span></a>
 <a class="publication-link" href="https://openreview.net/forum?id=WHYE1WjMYf"><i class="bi bi-building"></i><span>Proceedings</span></a>
 :::
 :::
@@ -229,7 +230,7 @@ Jason Toskov<sup>*</sup>, Oriol Barbany<sup>*</sup>, Rishubh Singh<sup>*</sup>, 
 **Jinya Sakurai**, Ryutaro Yamauchi, Ryo Furukawa, Tatsushi Matsubayashi
 
 ::: {.publication-links}
-<a class="publication-link" href="https://arxiv.org/abs/2311.02601"><i class="bi bi-journal-text"></i><span>arXiv</span></a>
+<a class="publication-link" href="https://arxiv.org/abs/2311.02601"><i class="ai ai-arxiv"></i><span>arXiv</span></a>
 <a class="publication-link" href="https://arxiv.org/pdf/2311.02601"><i class="bi bi-file-earmark-pdf"></i><span>Paper</span></a>
 :::
 :::

@@ -71,6 +71,7 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
 
 
 <link rel="stylesheet" href="styles.css">
@@ -452,7 +453,7 @@ Aug.&nbsp;2021 – Jul.&nbsp;2022</p>
 <h3 data-anchor-id="simplex-relaxation-for-discrete-diffusion">Simplex Relaxation for Discrete Diffusion</h3>
 <p><strong>Jinya Sakurai</strong>, Patrick Pynadath, Satoshi Hayakawa, Jaehong Yoon, Xulei Yang, Nancy F. Chen, Xun Xu</p>
 <div class="publication-links">
-<p><a class="publication-link" href="https://arxiv.org/abs/2608.10615"><i class="bi bi-journal-text"></i><span>arXiv</span></a> <a class="publication-link" href="https://arxiv.org/pdf/2608.10615"><i class="bi bi-file-earmark-pdf"></i><span>Paper</span></a></p>
+<p><a class="publication-link" href="simplax/"><i class="bi bi-globe2"></i><span>Project</span></a> <a class="publication-link" href="https://arxiv.org/abs/2608.10615"><i class="ai ai-arxiv"></i><span>arXiv</span></a> <a class="publication-link" href="https://arxiv.org/pdf/2608.10615"><i class="bi bi-file-earmark-pdf"></i><span>Paper</span></a></p>
 </div>
 </section>
 </div>
@@ -464,7 +465,7 @@ Aug.&nbsp;2021 – Jul.&nbsp;2022</p>
 <h3 data-anchor-id="test-time-scaling-for-safe-text-guided-image-generation-via-intermediate-clean-estimates">Test-Time Scaling for Safe Text-Guided Image Generation via Intermediate Clean Estimates</h3>
 <p><strong>Jinya Sakurai</strong>, Shueicheng Yan, Xun Xu</p>
 <div class="publication-links">
-<p><a class="publication-link" href="https://arxiv.org/abs/2608.03284"><i class="bi bi-journal-text"></i><span>arXiv</span></a> <a class="publication-link" href="https://arxiv.org/pdf/2608.03284"><i class="bi bi-file-earmark-pdf"></i><span>Paper</span></a></p>
+<p><a class="publication-link" href="https://arxiv.org/abs/2608.03284"><i class="ai ai-arxiv"></i><span>arXiv</span></a> <a class="publication-link" href="https://arxiv.org/pdf/2608.03284"><i class="bi bi-file-earmark-pdf"></i><span>Paper</span></a></p>
 </div>
 </section>
 </div>
@@ -476,7 +477,7 @@ Aug.&nbsp;2021 – Jul.&nbsp;2022</p>
 <h3 data-anchor-id="fairt2i-latent-variable-guidance-for-training-free-bias-mitigation-with-llm-assisted-bias-detection">FairT2I: Latent Variable Guidance for Training-Free Bias Mitigation with LLM-Assisted Bias Detection</h3>
 <p><strong>Jinya Sakurai</strong>, Yuki Koyama, Issei Sato</p>
 <div class="publication-links">
-<p><a class="publication-link" href="https://arxiv.org/abs/2502.03826"><i class="bi bi-journal-text"></i><span>arXiv</span></a> <a class="publication-link" href="https://openreview.net/forum?id=WHYE1WjMYf"><i class="bi bi-building"></i><span>Proceedings</span></a></p>
+<p><a class="publication-link" href="https://arxiv.org/abs/2502.03826"><i class="ai ai-arxiv"></i><span>arXiv</span></a> <a class="publication-link" href="https://openreview.net/forum?id=WHYE1WjMYf"><i class="bi bi-building"></i><span>Proceedings</span></a></p>
 </div>
 </section>
 </div>
@@ -500,7 +501,7 @@ Aug.&nbsp;2021 – Jul.&nbsp;2022</p>
 <h3 data-anchor-id="surface-reconstruction-from-raw-point-cloud-via-energy-based-models">Surface Reconstruction from Raw Point Cloud via Energy-Based Models</h3>
 <p><strong>Jinya Sakurai</strong>, Ryutaro Yamauchi, Ryo Furukawa, Tatsushi Matsubayashi</p>
 <div class="publication-links">
-<p><a class="publication-link" href="https://arxiv.org/abs/2311.02601"><i class="bi bi-journal-text"></i><span>arXiv</span></a> <a class="publication-link" href="https://arxiv.org/pdf/2311.02601"><i class="bi bi-file-earmark-pdf"></i><span>Paper</span></a></p>
+<p><a class="publication-link" href="https://arxiv.org/abs/2311.02601"><i class="ai ai-arxiv"></i><span>arXiv</span></a> <a class="publication-link" href="https://arxiv.org/pdf/2311.02601"><i class="bi bi-file-earmark-pdf"></i><span>Paper</span></a></p>
 </div>
 </section>
 </div>
@@ -643,6 +644,24 @@ Apr.&nbsp;2019 – Sep.&nbsp;2023</p>
 
     document.body.classList.add("panel-mode");
     sections.forEach((section) => section.classList.add("content-panel"));
+
+    const panelShell = document.querySelector(".quarto-about-solana");
+    const fitPanelToViewport = () => {
+      if (!panelShell) return;
+      const panelTop = Math.max(0, panelShell.getBoundingClientRect().top);
+      panelShell.style.height = `${Math.max(0, window.innerHeight - panelTop)}px`;
+    };
+    let resizeFrame = 0;
+    const schedulePanelFit = () => {
+      cancelAnimationFrame(resizeFrame);
+      resizeFrame = requestAnimationFrame(fitPanelToViewport);
+    };
+    schedulePanelFit();
+    window.addEventListener("resize", schedulePanelFit, { passive: true });
+    const siteHeader = document.getElementById("quarto-header");
+    if (siteHeader && "ResizeObserver" in window) {
+      new ResizeObserver(schedulePanelFit).observe(siteHeader);
+    }
 
     const navLinks = [...document.querySelectorAll(".navbar .nav-link")];
     let activeId = null;

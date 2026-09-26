@@ -55,16 +55,19 @@ body::before {
 
 .navbar .quarto-color-scheme-toggle {
   display: inline-flex;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: auto;
+  min-width: 6.2rem;
+  height: 2.65rem;
   margin-left: 0.55rem;
-  padding: 0 !important;
+  padding: 0 0.9rem !important;
+  gap: 0.45rem;
   align-items: center;
   justify-content: center;
   color: #fff;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 999px;
+  text-decoration: none !important;
   transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
 }
 
@@ -77,17 +80,44 @@ body::before {
 }
 
 .navbar .quarto-color-scheme-toggle .bi {
-  width: 1.25rem;
-  height: 1.25rem;
-  font-size: 1.25rem;
+  display: inline-grid;
+  width: 1.1rem;
+  height: 1.1rem;
+  place-items: center;
+  font-size: 1.08rem;
   line-height: 1;
 }
 
 .navbar .quarto-color-scheme-toggle .bi::before {
-  width: 1.25rem;
-  height: 1.25rem;
-  background-size: 1.25rem 1.25rem;
-  filter: brightness(0) invert(1);
+  width: auto;
+  height: auto;
+  color: #fff !important;
+  background: none !important;
+  filter: none;
+}
+
+.navbar .quarto-color-scheme-toggle.alternate .bi::before {
+  content: "☀";
+}
+
+.navbar .quarto-color-scheme-toggle:not(.alternate) .bi::before {
+  content: "☾";
+}
+
+.navbar .quarto-color-scheme-toggle::after {
+  color: #fff !important;
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.navbar .quarto-color-scheme-toggle.alternate::after {
+  content: "Light";
+}
+
+.navbar .quarto-color-scheme-toggle:not(.alternate)::after {
+  content: "Dark";
 }
 
 .quarto-about-solana { padding-top: clamp(2rem, 4vw, 3.5rem); }
@@ -105,7 +135,7 @@ body::before {
 
 h1.title {
   max-width: 760px;
-  margin-bottom: 0.45rem;
+  margin-bottom: 0.8rem;
   font-size: clamp(3.1rem, 6vw, 5.5rem);
   font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
   font-weight: 800;
@@ -196,9 +226,9 @@ h1.title {
 }
 
 .panel-mode .quarto-about-solana {
-  height: calc(100dvh - 58px);
-  margin-top: 58px;
-  padding-top: 1.5rem !important;
+  height: calc(100dvh - 4.85rem - 26px);
+  margin-top: 26px;
+  padding-top: 3.3rem !important;
   padding-bottom: 1rem;
   overflow: hidden;
 }
@@ -269,12 +299,16 @@ h1.title {
 
 .panel-mode main.content > .content-panel h2 {
   margin-top: 0.25rem;
+  font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
 }
 
 .panel-mode .profile-diffusion {
   position: absolute;
   top: 0rem;
-  right: 8rem;
+  right: 10rem;
   width: min(18vw, 190px);
   margin-top: 0;
 }
@@ -321,9 +355,9 @@ a { text-decoration-color: rgba(109, 74, 255, 0.35); text-decoration-thickness: 
   h1.title { font-size: clamp(3.3rem, 16vw, 5.8rem); }
 
   .panel-mode .quarto-about-solana {
-    height: calc(100dvh - 54px);
-    margin-top: 54px;
-    padding: 1rem 1rem 0.65rem !important;
+    height: calc(100dvh - 5.5rem - 14px);
+    margin-top: 14px;
+    padding: 2.35rem 1rem 0.65rem !important;
   }
 
   .panel-mode .quarto-about-solana .about-entity {
@@ -334,7 +368,7 @@ a { text-decoration-color: rgba(109, 74, 255, 0.35); text-decoration-thickness: 
 
   .panel-mode .profile-diffusion {
     position: absolute;
-    top: 3rem;
+    top: 1.5rem;
     right: 0.25rem;
     z-index: 2;
     width: 82px;
@@ -352,7 +386,7 @@ a { text-decoration-color: rgba(109, 74, 255, 0.35); text-decoration-thickness: 
   }
 
   .panel-mode .entity-contents {
-    padding-top: 3rem;
+    padding-top: 1.5rem;
   }
 
   .panel-mode .subtitle {
@@ -776,6 +810,19 @@ body.quarto-dark h1.title {
 
   .publication-card {
     border-radius: 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .navbar .quarto-color-scheme-toggle {
+    width: 2.65rem;
+    min-width: 2.65rem;
+    padding: 0 !important;
+  }
+
+  .navbar .quarto-color-scheme-toggle.alternate::after,
+  .navbar .quarto-color-scheme-toggle:not(.alternate)::after {
+    content: none;
   }
 }
 
