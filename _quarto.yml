@@ -8,6 +8,7 @@ project:
 
 website:
   title: "Jinya Sakurai"
+  favicon: favicon.png
   page-navigation: true
   navbar:
     pinned: true
