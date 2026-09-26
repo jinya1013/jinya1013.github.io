@@ -1,5 +1,6 @@
 ---
 title: "Jinya Sakurai"
+subtitle: "GENERATIVE MODELS · DIFFUSION · 3D"
 page-layout: full
 about:
   template: solana
