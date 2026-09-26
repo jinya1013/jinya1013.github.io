@@ -38,10 +38,12 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-f418161beb48e0141c760e455f12af2c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-158031087360bce0ff56dc785ce39e06.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-158031087360bce0ff56dc785ce39e06.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-5685cd926c25366c96d9f1407e584118.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -75,7 +77,167 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -94,7 +256,7 @@ ul.task-list li input[type="checkbox"] {
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="./index.html#about"> 
-<span class="menu-text">About</span></a>
+<span class="menu-text">About me</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./index.html#news"> 
@@ -105,16 +267,17 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./publications.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html#publications"> 
 <span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./index.html#contact"> 
-<span class="menu-text">Contact</span></a>
+    <a class="nav-link" href="./index.html#education"> 
+<span class="menu-text">Education</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -126,6 +289,7 @@ ul.task-list li input[type="checkbox"] {
     
 <!-- main -->
 <main class="content column-page" id="quarto-document-content">
+
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -205,12 +369,12 @@ Selected papers and accompanying resources. Links to project pages, code, and pa
 </div>
 <div class="publication-card">
 <div class="publication-meta">
-<p><span class="publication-type">PREPRINT</span><span>2026</span></p>
+<p><span class="publication-type">CONFERENCE</span><span>NeurIPS 2026</span></p>
 </div>
 <section id="omnidimm-bridging-1d-2d-and-3d-with-any-to-any-multimodal-modeling" class="level3">
 <h3 class="anchored" data-anchor-id="omnidimm-bridging-1d-2d-and-3d-with-any-to-any-multimodal-modeling">OmniDiMM: Bridging 1D, 2D, and 3D with Any-to-Any Multimodal Modeling</h3>
 <p>Jason Toskov<sup><em></em></sup><em>, Oriol Barbany<sup></sup></em>, Rishubh Singh<sup>*</sup>, <strong>Jinya Sakurai</strong>, Efe Tarhan, Oğuzhan Fatih Kar, Roman Bachmann, Amir Zadeh, Jesse Allardice, Chuan Li, Carme Torras, Afshin Dehghan, Amir Zamir</p>
-<p>An any-to-any multimodal model that bridges 1D, 2D, and 3D representations for generation, retrieval, and object decomposition across text, images, and 3D modalities.</p>
+<p>Accepted to NeurIPS 2026. An any-to-any multimodal model that bridges 1D, 2D, and 3D representations for generation, retrieval, and object decomposition across text, images, and 3D modalities.</p>
 <div class="publication-links">
 <p><a class="publication-link" href="https://omnidimm.epfl.ch/"><i class="bi bi-globe2"></i><span>Project</span></a> <a class="publication-link" href="https://omnidimm.epfl.ch/assets/OmniDiMM_ArXiv_Release.pdf"><i class="bi bi-file-earmark-pdf"></i><span>Paper</span></a> <!-- Add when available:
 <a class="publication-link" href="GITHUB_URL"><i class="bi bi-github"></i><span>GitHub</span></a>
@@ -248,6 +412,7 @@ Selected papers and accompanying resources. Links to project pages, code, and pa
 </main> <!-- /main -->
 <script>
 (() => {
+  document.documentElement.classList.add("motion-ready");
   const glyphs = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz0123456789?!#@$%&*+=";
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const randomGlyph = () => glyphs[Math.floor(Math.random() * glyphs.length)];
@@ -286,15 +451,11 @@ Selected papers and accompanying resources. Links to project pages, code, and pa
       field.appendChild(span);
       return span;
     });
-    const status = document.createElement("span");
-    status.className = "diffusion-status";
-    status.setAttribute("aria-hidden", "true");
-    status.textContent = "t=1000  noise=1.00";
-    wrapper.append(field, status);
+    wrapper.append(field);
 
     if (reduceMotion) { wrapper.classList.add("is-complete"); return; }
-    const duration = 2400;
-    const start = performance.now() + 180;
+    const duration = 1500;
+    const start = performance.now();
     let lastShuffle = 0;
     const denoise = (now) => {
       const progress = Math.max(0, Math.min((now - start) / duration, 1));
@@ -306,7 +467,6 @@ Selected papers and accompanying resources. Links to project pages, code, and pa
           cell.style.opacity = threshold < eased ? "0" : String(0.35 + threshold * 0.65);
           cell.style.transform = threshold < eased ? "scale(0.3)" : "scale(1)";
         });
-        status.textContent = `t=${String(Math.round((1 - progress) * 1000)).padStart(4, "0")}  noise=${(1 - eased).toFixed(2)}`;
         image.style.opacity = String(0.18 + eased * 0.82);
         image.style.filter = `blur(${(1 - eased) * 18}px) saturate(${0.25 + eased * 0.8}) contrast(1.08)`;
         lastShuffle = now;
@@ -317,12 +477,144 @@ Selected papers and accompanying resources. Links to project pages, code, and pa
     requestAnimationFrame(denoise);
   }
 
+  function decodeElement(element, delay = 0, duration = 1700) {
+    if (!element || element.dataset.decoded === "true") return;
+    element.dataset.decoded = "true";
+
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+    const nodes = [];
+    let node;
+    while ((node = walker.nextNode())) {
+      const finalText = node.nodeValue;
+      const thresholds = [...finalText].map((char) => /\s/.test(char) ? 0 : Math.random());
+      nodes.push({ node, finalText, thresholds });
+    }
+
+    if (reduceMotion) return;
+    const start = performance.now() + delay;
+    const tick = (now) => {
+      const progress = Math.max(0, Math.min((now - start) / duration, 1));
+      nodes.forEach(({ node: textNode, finalText, thresholds }) => {
+        textNode.nodeValue = [...finalText].map((char, index) => {
+          if (/\s/.test(char) || thresholds[index] <= progress) return char;
+          if (/[^A-Za-z0-9]/.test(char)) return char;
+          return randomGlyph();
+        }).join("");
+      });
+      if (progress < 1) requestAnimationFrame(tick);
+      else nodes.forEach(({ node: textNode, finalText }) => { textNode.nodeValue = finalText; });
+    };
+    requestAnimationFrame(tick);
+  }
+
+  function decodeAbout() {
+    const paragraphs = [...document.querySelectorAll("#about > p")];
+    paragraphs.forEach((paragraph, index) => decodeElement(paragraph, 60 + index * 70, 850));
+  }
+
+  function initSectionPanels() {
+    const sections = [...document.querySelectorAll("main.content > section.level2")];
+    const panelIds = sections.map((section) => section.id).filter(Boolean);
+    if (!panelIds.includes("about")) return;
+
+    document.body.classList.add("panel-mode");
+    sections.forEach((section) => section.classList.add("content-panel"));
+
+    const navLinks = [...document.querySelectorAll(".navbar .nav-link")];
+    let activeId = null;
+    let transitionId = 0;
+
+    const idFromLink = (link) => {
+      const url = new URL(link.href, window.location.href);
+      if (url.pathname !== window.location.pathname) return null;
+      if (panelIds.includes(url.hash.slice(1))) return url.hash.slice(1);
+      return null;
+    };
+
+    const setNavState = (id) => {
+      navLinks.forEach((link) => {
+        const selected = idFromLink(link) === id;
+        link.classList.toggle("active", selected);
+        if (selected) link.setAttribute("aria-current", "page");
+        else link.removeAttribute("aria-current");
+      });
+    };
+
+    const showPanel = async (id, animated = true, updateHistory = true) => {
+      if (!panelIds.includes(id) || id === activeId) return;
+      const runId = ++transitionId;
+      const previous = activeId ? document.getElementById(activeId) : null;
+      const next = document.getElementById(id);
+      activeId = id;
+
+      if (id === "about") decodeAbout();
+
+      next.hidden = false;
+      next.removeAttribute("aria-hidden");
+      next.scrollTop = 0;
+      setNavState(id);
+
+      if (updateHistory) history.replaceState(null, "", `#${id}`);
+
+      if (!animated || reduceMotion || !("animate" in next)) {
+        sections.forEach((section) => { section.hidden = section !== next; });
+        return;
+      }
+
+      const options = { duration: 520, easing: "cubic-bezier(0.65, 0, 0.35, 1)", fill: "both" };
+      const motions = [next.animate([
+        { transform: "translate3d(72px, 0, 0)", opacity: 0.15 },
+        { transform: "translate3d(0, 0, 0)", opacity: 1 }
+      ], options)];
+
+      if (previous) {
+        previous.hidden = false;
+        previous.setAttribute("aria-hidden", "true");
+        motions.push(previous.animate([
+          { transform: "translate3d(0, 0, 0)", opacity: 1 },
+          { transform: "translate3d(-72px, 0, 0)", opacity: 0.15 }
+        ], options));
+      }
+
+      await Promise.allSettled(motions.map((motion) => motion.finished));
+      if (runId !== transitionId) return;
+      sections.forEach((section) => {
+        section.getAnimations().forEach((animation) => animation.cancel());
+        section.hidden = section !== next;
+        section.toggleAttribute("aria-hidden", section !== next);
+      });
+    };
+
+    sections.forEach((section) => {
+      section.hidden = true;
+      section.setAttribute("aria-hidden", "true");
+    });
+
+    navLinks.forEach((link) => {
+      const id = idFromLink(link);
+      if (!id) return;
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        showPanel(id);
+      });
+    });
+
+    window.addEventListener("hashchange", () => {
+      const id = window.location.hash.slice(1);
+      if (panelIds.includes(id)) showPanel(id, true, false);
+    });
+
+    const initialId = panelIds.includes(window.location.hash.slice(1)) ? window.location.hash.slice(1) : "about";
+    showPanel(initialId, false, false);
+  }
+
   function init() {
     const title = document.querySelector("h1.title");
     const subtitle = document.querySelector(".subtitle");
     if (title) scrambleText(title, title.textContent.trim(), 1500);
     if (subtitle) scrambleText(subtitle, subtitle.textContent.trim(), 1900);
     buildProfileDiffusion();
+    initSectionPanels();
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init, { once: true });
   else init();
@@ -330,6 +622,19 @@ Selected papers and accompanying resources. Links to project pages, code, and pa
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
     const anchorJS = new window.AnchorJS();
     anchorJS.options = {

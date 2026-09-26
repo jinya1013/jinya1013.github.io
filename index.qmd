@@ -26,7 +26,7 @@ format:
     title-block-banner: false
 ---
 
-## About {#about}
+## About me {#about}
 
 I am a PhD student at College of Computing and Data Science, Nanyang Technological University under the supervision of [Prof. Jaehong Yoon](https://jaehong31.github.io/). I graduated from The University of Tokyo in March 2026. From November 2025 to May 2026, I was a visiting student at the Institute for Infocomm Research, A*STAR I2R, under the supervision of [Dr. Xun Xu](https://alex-xun-xu.github.io/).
 
@@ -38,6 +38,15 @@ Outside research, I enjoy playing badminton. I have brought my badminton racket 
 
 ::: {.news-list}
 ::: {.news-item .news-latest}
+::: {.news-date}
+<span class="news-month">SEP</span><span class="news-year">2026</span>
+:::
+::: {.news-content}
+Our paper *OmniDiMM: Bridging 1D, 2D, and 3D with Any-to-Any Multimodal Modeling* was accepted to NeurIPS 2026! [Project](https://omnidimm.epfl.ch/) · [Paper](https://omnidimm.epfl.ch/assets/OmniDiMM_ArXiv_Release.pdf)
+:::
+:::
+
+::: {.news-item}
 ::: {.news-date}
 <span class="news-month">AUG</span><span class="news-year">2026</span>
 :::
@@ -150,27 +159,99 @@ Aug. 2021 -- Jul. 2022
 
 ## Publications {#publications}
 
-My work spans generative modeling, responsible text-to-image generation, and 3D representation learning. See the dedicated page for papers, abstracts, and resource links.
+::: {.publication-card}
+::: {.publication-meta}
+<span class="publication-type">PREPRINT</span><span>2026</span>
+:::
 
-<a class="section-cta" href="publications.html">View all publications <i class="bi bi-arrow-right"></i></a>
+### Simplex Relaxation for Discrete Diffusion
 
-## Education
+**Jinya Sakurai**, Patrick Pynadath, Satoshi Hayakawa, Jaehong Yoon, Xulei Yang, Nancy F. Chen, Xun Xu
 
+::: {.publication-links}
+<a class="publication-link" href="https://arxiv.org/abs/2608.10615"><i class="bi bi-journal-text"></i><span>arXiv</span></a>
+<a class="publication-link" href="https://arxiv.org/pdf/2608.10615"><i class="bi bi-file-earmark-pdf"></i><span>Paper</span></a>
+:::
+:::
+
+::: {.publication-card}
+::: {.publication-meta}
+<span class="publication-type">PREPRINT</span><span>2026</span>
+:::
+
+### Test-Time Scaling for Safe Text-Guided Image Generation via Intermediate Clean Estimates
+
+**Jinya Sakurai**, Shueicheng Yan, Xun Xu
+
+::: {.publication-links}
+<a class="publication-link" href="https://arxiv.org/abs/2608.03284"><i class="bi bi-journal-text"></i><span>arXiv</span></a>
+<a class="publication-link" href="https://arxiv.org/pdf/2608.03284"><i class="bi bi-file-earmark-pdf"></i><span>Paper</span></a>
+:::
+:::
+
+::: {.publication-card}
+::: {.publication-meta}
+<span class="publication-type">JOURNAL</span><span>TMLR 2026</span>
+:::
+
+### FairT2I: Latent Variable Guidance for Training-Free Bias Mitigation with LLM-Assisted Bias Detection
+
+**Jinya Sakurai**, Yuki Koyama, Issei Sato
+
+::: {.publication-links}
+<a class="publication-link" href="https://arxiv.org/abs/2502.03826"><i class="bi bi-journal-text"></i><span>arXiv</span></a>
+<a class="publication-link" href="https://openreview.net/forum?id=WHYE1WjMYf"><i class="bi bi-building"></i><span>Proceedings</span></a>
+:::
+:::
+
+::: {.publication-card}
+::: {.publication-meta}
+<span class="publication-type">CONFERENCE</span><span>NeurIPS 2026</span>
+:::
+
+### OmniDiMM: Bridging 1D, 2D, and 3D with Any-to-Any Multimodal Modeling
+
+Jason Toskov<sup>*</sup>, Oriol Barbany<sup>*</sup>, Rishubh Singh<sup>*</sup>, **Jinya Sakurai**, et al.
+
+::: {.publication-links}
+<a class="publication-link" href="https://omnidimm.epfl.ch/"><i class="bi bi-globe2"></i><span>Project</span></a>
+<a class="publication-link" href="https://omnidimm.epfl.ch/assets/OmniDiMM_ArXiv_Release.pdf"><i class="bi bi-file-earmark-pdf"></i><span>Paper</span></a>
+:::
+:::
+
+::: {.publication-card}
+::: {.publication-meta}
+<span class="publication-type">CONFERENCE</span><span>JSAI 2022</span>
+:::
+
+### Surface Reconstruction from Raw Point Cloud via Energy-Based Models
+
+**Jinya Sakurai**, Ryutaro Yamauchi, Ryo Furukawa, Tatsushi Matsubayashi
+
+::: {.publication-links}
+<a class="publication-link" href="https://arxiv.org/abs/2311.02601"><i class="bi bi-journal-text"></i><span>arXiv</span></a>
+<a class="publication-link" href="https://arxiv.org/pdf/2311.02601"><i class="bi bi-file-earmark-pdf"></i><span>Paper</span></a>
+:::
+:::
+
+## Education {#education}
+
+::: {.timeline}
+::: {.timeline-item}
 ### Nanyang Technological University
 **PhD in Computer Science**  
 Aug. 2026 -- Present
+:::
 
+::: {.timeline-item}
 ### The University of Tokyo
 **Master of Computer Science**  
 Apr. 2024 -- Mar. 2026
+:::
 
+::: {.timeline-item}
 ### The University of Tokyo
 **Bachelor of Information Science**  
 Apr. 2019 -- Sep. 2023
-
-## Contact {#contact}
-
-- Email: [jinya001@e.ntu.edu.sg](mailto:jinya001@e.ntu.edu.sg)
-- GitHub: [jinya1013](https://github.com/jinya1013)
-- Google Scholar: [Profile](https://scholar.google.com/citations?view_op=list_works&hl=en&user=8h7YTFMAAAAJ)
-- LinkedIn: [jinya-sakurai](https://www.linkedin.com/in/jinya-sakurai/)
+:::
+:::

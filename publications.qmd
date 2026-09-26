@@ -80,14 +80,14 @@ FairT2I uses large language models to detect potential social bias in text-to-im
 
 ::: {.publication-card}
 ::: {.publication-meta}
-<span class="publication-type">PREPRINT</span><span>2026</span>
+<span class="publication-type">CONFERENCE</span><span>NeurIPS 2026</span>
 :::
 
 ### OmniDiMM: Bridging 1D, 2D, and 3D with Any-to-Any Multimodal Modeling
 
 Jason Toskov<sup>*</sup>, Oriol Barbany<sup>*</sup>, Rishubh Singh<sup>*</sup>, **Jinya Sakurai**, Efe Tarhan, Oğuzhan Fatih Kar, Roman Bachmann, Amir Zadeh, Jesse Allardice, Chuan Li, Carme Torras, Afshin Dehghan, Amir Zamir
 
-An any-to-any multimodal model that bridges 1D, 2D, and 3D representations for generation, retrieval, and object decomposition across text, images, and 3D modalities.
+Accepted to NeurIPS 2026. An any-to-any multimodal model that bridges 1D, 2D, and 3D representations for generation, retrieval, and object decomposition across text, images, and 3D modalities.
 
 ::: {.publication-links}
 <a class="publication-link" href="https://omnidimm.epfl.ch/"><i class="bi bi-globe2"></i><span>Project</span></a>

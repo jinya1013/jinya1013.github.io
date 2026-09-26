@@ -37,10 +37,12 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-f418161beb48e0141c760e455f12af2c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-158031087360bce0ff56dc785ce39e06.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-158031087360bce0ff56dc785ce39e06.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-5685cd926c25366c96d9f1407e584118.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -74,7 +76,167 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -93,7 +255,7 @@ ul.task-list li input[type="checkbox"] {
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="./index.html#about"> 
-<span class="menu-text">About</span></a>
+<span class="menu-text">About me</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./index.html#news"> 
@@ -104,16 +266,17 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./publications.html"> 
+    <a class="nav-link" href="./index.html#publications"> 
 <span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./index.html#contact"> 
-<span class="menu-text">Contact</span></a>
+    <a class="nav-link" href="./index.html#education"> 
+<span class="menu-text">Education</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -157,8 +320,9 @@ ul.task-list li input[type="checkbox"] {
   </a>
 </div>
       <div class="about-contents"><main class="content column-page" id="quarto-document-content">
+
 <section id="about" class="level2">
-<h2 data-anchor-id="about">About</h2>
+<h2 data-anchor-id="about">About me</h2>
 <p>I am a PhD student at College of Computing and Data Science, Nanyang Technological University under the supervision of <a href="https://jaehong31.github.io/">Prof.&nbsp;Jaehong Yoon</a>. I graduated from The University of Tokyo in March 2026. From November 2025 to May 2026, I was a visiting student at the Institute for Infocomm Research, A*STAR I2R, under the supervision of <a href="https://alex-xun-xu.github.io/">Dr.&nbsp;Xun Xu</a>.</p>
 <p>My research interests center on discrete and continuous diffusion models and their applications, including image generation, language modeling, 3D generation, and text-to-speech systems. More broadly, I am interested in generative modeling, computer vision, 3D world understanding, and statistical machine learning.</p>
 <p>Outside research, I enjoy playing badminton. I have brought my badminton racket to every country I have visited, including Sweden, Saudi Arabia, Switzerland, and Singapore.</p>
@@ -167,6 +331,14 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-anchor-id="news">News</h2>
 <div class="news-list">
 <div class="news-item news-latest">
+<div class="news-date">
+<p><span class="news-month">SEP</span><span class="news-year">2026</span></p>
+</div>
+<div class="news-content">
+<p>Our paper <em>OmniDiMM: Bridging 1D, 2D, and 3D with Any-to-Any Multimodal Modeling</em> was accepted to NeurIPS 2026! <a href="https://omnidimm.epfl.ch/">Project</a> · <a href="https://omnidimm.epfl.ch/assets/OmniDiMM_ArXiv_Release.pdf">Paper</a></p>
+</div>
+</div>
+<div class="news-item">
 <div class="news-date">
 <p><span class="news-month">AUG</span><span class="news-year">2026</span></p>
 </div>
@@ -272,35 +444,86 @@ Aug.&nbsp;2021 – Jul.&nbsp;2022</p>
 </section>
 <section id="publications" class="level2">
 <h2 data-anchor-id="publications">Publications</h2>
-<p>My work spans generative modeling, responsible text-to-image generation, and 3D representation learning. See the dedicated page for papers, abstracts, and resource links.</p>
-<p><a class="section-cta" href="publications.html">View all publications <i class="bi bi-arrow-right"></i></a></p>
+<div class="publication-card">
+<div class="publication-meta">
+<p><span class="publication-type">PREPRINT</span><span>2026</span></p>
+</div>
+<section id="simplex-relaxation-for-discrete-diffusion" class="level3">
+<h3 data-anchor-id="simplex-relaxation-for-discrete-diffusion">Simplex Relaxation for Discrete Diffusion</h3>
+<p><strong>Jinya Sakurai</strong>, Patrick Pynadath, Satoshi Hayakawa, Jaehong Yoon, Xulei Yang, Nancy F. Chen, Xun Xu</p>
+<div class="publication-links">
+<p><a class="publication-link" href="https://arxiv.org/abs/2608.10615"><i class="bi bi-journal-text"></i><span>arXiv</span></a> <a class="publication-link" href="https://arxiv.org/pdf/2608.10615"><i class="bi bi-file-earmark-pdf"></i><span>Paper</span></a></p>
+</div>
+</section>
+</div>
+<div class="publication-card">
+<div class="publication-meta">
+<p><span class="publication-type">PREPRINT</span><span>2026</span></p>
+</div>
+<section id="test-time-scaling-for-safe-text-guided-image-generation-via-intermediate-clean-estimates" class="level3">
+<h3 data-anchor-id="test-time-scaling-for-safe-text-guided-image-generation-via-intermediate-clean-estimates">Test-Time Scaling for Safe Text-Guided Image Generation via Intermediate Clean Estimates</h3>
+<p><strong>Jinya Sakurai</strong>, Shueicheng Yan, Xun Xu</p>
+<div class="publication-links">
+<p><a class="publication-link" href="https://arxiv.org/abs/2608.03284"><i class="bi bi-journal-text"></i><span>arXiv</span></a> <a class="publication-link" href="https://arxiv.org/pdf/2608.03284"><i class="bi bi-file-earmark-pdf"></i><span>Paper</span></a></p>
+</div>
+</section>
+</div>
+<div class="publication-card">
+<div class="publication-meta">
+<p><span class="publication-type">JOURNAL</span><span>TMLR 2026</span></p>
+</div>
+<section id="fairt2i-latent-variable-guidance-for-training-free-bias-mitigation-with-llm-assisted-bias-detection" class="level3">
+<h3 data-anchor-id="fairt2i-latent-variable-guidance-for-training-free-bias-mitigation-with-llm-assisted-bias-detection">FairT2I: Latent Variable Guidance for Training-Free Bias Mitigation with LLM-Assisted Bias Detection</h3>
+<p><strong>Jinya Sakurai</strong>, Yuki Koyama, Issei Sato</p>
+<div class="publication-links">
+<p><a class="publication-link" href="https://arxiv.org/abs/2502.03826"><i class="bi bi-journal-text"></i><span>arXiv</span></a> <a class="publication-link" href="https://openreview.net/forum?id=WHYE1WjMYf"><i class="bi bi-building"></i><span>Proceedings</span></a></p>
+</div>
+</section>
+</div>
+<div class="publication-card">
+<div class="publication-meta">
+<p><span class="publication-type">CONFERENCE</span><span>NeurIPS 2026</span></p>
+</div>
+<section id="omnidimm-bridging-1d-2d-and-3d-with-any-to-any-multimodal-modeling" class="level3">
+<h3 data-anchor-id="omnidimm-bridging-1d-2d-and-3d-with-any-to-any-multimodal-modeling">OmniDiMM: Bridging 1D, 2D, and 3D with Any-to-Any Multimodal Modeling</h3>
+<p>Jason Toskov<sup><em></em></sup><em>, Oriol Barbany<sup></sup></em>, Rishubh Singh<sup>*</sup>, <strong>Jinya Sakurai</strong>, et al.</p>
+<div class="publication-links">
+<p><a class="publication-link" href="https://omnidimm.epfl.ch/"><i class="bi bi-globe2"></i><span>Project</span></a> <a class="publication-link" href="https://omnidimm.epfl.ch/assets/OmniDiMM_ArXiv_Release.pdf"><i class="bi bi-file-earmark-pdf"></i><span>Paper</span></a></p>
+</div>
+</section>
+</div>
+<div class="publication-card">
+<div class="publication-meta">
+<p><span class="publication-type">CONFERENCE</span><span>JSAI 2022</span></p>
+</div>
+<section id="surface-reconstruction-from-raw-point-cloud-via-energy-based-models" class="level3">
+<h3 data-anchor-id="surface-reconstruction-from-raw-point-cloud-via-energy-based-models">Surface Reconstruction from Raw Point Cloud via Energy-Based Models</h3>
+<p><strong>Jinya Sakurai</strong>, Ryutaro Yamauchi, Ryo Furukawa, Tatsushi Matsubayashi</p>
+<div class="publication-links">
+<p><a class="publication-link" href="https://arxiv.org/abs/2311.02601"><i class="bi bi-journal-text"></i><span>arXiv</span></a> <a class="publication-link" href="https://arxiv.org/pdf/2311.02601"><i class="bi bi-file-earmark-pdf"></i><span>Paper</span></a></p>
+</div>
+</section>
+</div>
 </section>
 <section id="education" class="level2">
 <h2 data-anchor-id="education">Education</h2>
-<section id="nanyang-technological-university" class="level3">
+<div class="timeline">
+<section id="nanyang-technological-university" class="level3 timeline-item">
 <h3 data-anchor-id="nanyang-technological-university">Nanyang Technological University</h3>
 <p><strong>PhD in Computer Science</strong><br>
 Aug.&nbsp;2026 – Present</p>
 </section>
-<section id="the-university-of-tokyo" class="level3">
+<section id="the-university-of-tokyo" class="level3 timeline-item">
 <h3 data-anchor-id="the-university-of-tokyo">The University of Tokyo</h3>
 <p><strong>Master of Computer Science</strong><br>
 Apr.&nbsp;2024 – Mar.&nbsp;2026</p>
 </section>
-<section id="the-university-of-tokyo-1" class="level3">
+<section id="the-university-of-tokyo-1" class="level3 timeline-item">
 <h3 data-anchor-id="the-university-of-tokyo-1">The University of Tokyo</h3>
 <p><strong>Bachelor of Information Science</strong><br>
 Apr.&nbsp;2019 – Sep.&nbsp;2023</p>
 </section>
-</section>
-<section id="contact" class="level2">
-<h2 data-anchor-id="contact">Contact</h2>
-<ul>
-<li>Email: <a href="mailto:jinya001@e.ntu.edu.sg">jinya001@e.ntu.edu.sg</a></li>
-<li>GitHub: <a href="https://github.com/jinya1013">jinya1013</a></li>
-<li>Google Scholar: <a href="https://scholar.google.com/citations?view_op=list_works&amp;hl=en&amp;user=8h7YTFMAAAAJ">Profile</a></li>
-<li>LinkedIn: <a href="https://www.linkedin.com/in/jinya-sakurai/">jinya-sakurai</a></li>
-</ul>
+</div>
 
 
 </section>
@@ -313,6 +536,7 @@ Apr.&nbsp;2019 – Sep.&nbsp;2023</p>
  <!-- /main -->
 <script>
 (() => {
+  document.documentElement.classList.add("motion-ready");
   const glyphs = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz0123456789?!#@$%&*+=";
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const randomGlyph = () => glyphs[Math.floor(Math.random() * glyphs.length)];
@@ -351,15 +575,11 @@ Apr.&nbsp;2019 – Sep.&nbsp;2023</p>
       field.appendChild(span);
       return span;
     });
-    const status = document.createElement("span");
-    status.className = "diffusion-status";
-    status.setAttribute("aria-hidden", "true");
-    status.textContent = "t=1000  noise=1.00";
-    wrapper.append(field, status);
+    wrapper.append(field);
 
     if (reduceMotion) { wrapper.classList.add("is-complete"); return; }
-    const duration = 2400;
-    const start = performance.now() + 180;
+    const duration = 1500;
+    const start = performance.now();
     let lastShuffle = 0;
     const denoise = (now) => {
       const progress = Math.max(0, Math.min((now - start) / duration, 1));
@@ -371,7 +591,6 @@ Apr.&nbsp;2019 – Sep.&nbsp;2023</p>
           cell.style.opacity = threshold < eased ? "0" : String(0.35 + threshold * 0.65);
           cell.style.transform = threshold < eased ? "scale(0.3)" : "scale(1)";
         });
-        status.textContent = `t=${String(Math.round((1 - progress) * 1000)).padStart(4, "0")}  noise=${(1 - eased).toFixed(2)}`;
         image.style.opacity = String(0.18 + eased * 0.82);
         image.style.filter = `blur(${(1 - eased) * 18}px) saturate(${0.25 + eased * 0.8}) contrast(1.08)`;
         lastShuffle = now;
@@ -382,12 +601,144 @@ Apr.&nbsp;2019 – Sep.&nbsp;2023</p>
     requestAnimationFrame(denoise);
   }
 
+  function decodeElement(element, delay = 0, duration = 1700) {
+    if (!element || element.dataset.decoded === "true") return;
+    element.dataset.decoded = "true";
+
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+    const nodes = [];
+    let node;
+    while ((node = walker.nextNode())) {
+      const finalText = node.nodeValue;
+      const thresholds = [...finalText].map((char) => /\s/.test(char) ? 0 : Math.random());
+      nodes.push({ node, finalText, thresholds });
+    }
+
+    if (reduceMotion) return;
+    const start = performance.now() + delay;
+    const tick = (now) => {
+      const progress = Math.max(0, Math.min((now - start) / duration, 1));
+      nodes.forEach(({ node: textNode, finalText, thresholds }) => {
+        textNode.nodeValue = [...finalText].map((char, index) => {
+          if (/\s/.test(char) || thresholds[index] <= progress) return char;
+          if (/[^A-Za-z0-9]/.test(char)) return char;
+          return randomGlyph();
+        }).join("");
+      });
+      if (progress < 1) requestAnimationFrame(tick);
+      else nodes.forEach(({ node: textNode, finalText }) => { textNode.nodeValue = finalText; });
+    };
+    requestAnimationFrame(tick);
+  }
+
+  function decodeAbout() {
+    const paragraphs = [...document.querySelectorAll("#about > p")];
+    paragraphs.forEach((paragraph, index) => decodeElement(paragraph, 60 + index * 70, 850));
+  }
+
+  function initSectionPanels() {
+    const sections = [...document.querySelectorAll("main.content > section.level2")];
+    const panelIds = sections.map((section) => section.id).filter(Boolean);
+    if (!panelIds.includes("about")) return;
+
+    document.body.classList.add("panel-mode");
+    sections.forEach((section) => section.classList.add("content-panel"));
+
+    const navLinks = [...document.querySelectorAll(".navbar .nav-link")];
+    let activeId = null;
+    let transitionId = 0;
+
+    const idFromLink = (link) => {
+      const url = new URL(link.href, window.location.href);
+      if (url.pathname !== window.location.pathname) return null;
+      if (panelIds.includes(url.hash.slice(1))) return url.hash.slice(1);
+      return null;
+    };
+
+    const setNavState = (id) => {
+      navLinks.forEach((link) => {
+        const selected = idFromLink(link) === id;
+        link.classList.toggle("active", selected);
+        if (selected) link.setAttribute("aria-current", "page");
+        else link.removeAttribute("aria-current");
+      });
+    };
+
+    const showPanel = async (id, animated = true, updateHistory = true) => {
+      if (!panelIds.includes(id) || id === activeId) return;
+      const runId = ++transitionId;
+      const previous = activeId ? document.getElementById(activeId) : null;
+      const next = document.getElementById(id);
+      activeId = id;
+
+      if (id === "about") decodeAbout();
+
+      next.hidden = false;
+      next.removeAttribute("aria-hidden");
+      next.scrollTop = 0;
+      setNavState(id);
+
+      if (updateHistory) history.replaceState(null, "", `#${id}`);
+
+      if (!animated || reduceMotion || !("animate" in next)) {
+        sections.forEach((section) => { section.hidden = section !== next; });
+        return;
+      }
+
+      const options = { duration: 520, easing: "cubic-bezier(0.65, 0, 0.35, 1)", fill: "both" };
+      const motions = [next.animate([
+        { transform: "translate3d(72px, 0, 0)", opacity: 0.15 },
+        { transform: "translate3d(0, 0, 0)", opacity: 1 }
+      ], options)];
+
+      if (previous) {
+        previous.hidden = false;
+        previous.setAttribute("aria-hidden", "true");
+        motions.push(previous.animate([
+          { transform: "translate3d(0, 0, 0)", opacity: 1 },
+          { transform: "translate3d(-72px, 0, 0)", opacity: 0.15 }
+        ], options));
+      }
+
+      await Promise.allSettled(motions.map((motion) => motion.finished));
+      if (runId !== transitionId) return;
+      sections.forEach((section) => {
+        section.getAnimations().forEach((animation) => animation.cancel());
+        section.hidden = section !== next;
+        section.toggleAttribute("aria-hidden", section !== next);
+      });
+    };
+
+    sections.forEach((section) => {
+      section.hidden = true;
+      section.setAttribute("aria-hidden", "true");
+    });
+
+    navLinks.forEach((link) => {
+      const id = idFromLink(link);
+      if (!id) return;
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        showPanel(id);
+      });
+    });
+
+    window.addEventListener("hashchange", () => {
+      const id = window.location.hash.slice(1);
+      if (panelIds.includes(id)) showPanel(id, true, false);
+    });
+
+    const initialId = panelIds.includes(window.location.hash.slice(1)) ? window.location.hash.slice(1) : "about";
+    showPanel(initialId, false, false);
+  }
+
   function init() {
     const title = document.querySelector("h1.title");
     const subtitle = document.querySelector(".subtitle");
     if (title) scrambleText(title, title.textContent.trim(), 1500);
     if (subtitle) scrambleText(subtitle, subtitle.textContent.trim(), 1900);
     buildProfileDiffusion();
+    initSectionPanels();
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init, { once: true });
   else init();
@@ -395,6 +746,19 @@ Apr.&nbsp;2019 – Sep.&nbsp;2023</p>
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     

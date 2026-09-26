@@ -8,20 +8,22 @@ website:
   navbar:
     pinned: true
     right:
-      - text: About
+      - text: About me
         href: index.qmd#about
       - text: News
         href: index.qmd#news
       - text: Research
         href: index.qmd#research
       - text: Publications
-        href: publications.qmd
-      - text: Contact
-        href: index.qmd#contact
+        href: index.qmd#publications
+      - text: Education
+        href: index.qmd#education
 
 format:
   html:
-    theme: cosmo
+    theme:
+      dark: darkly
+      light: cosmo
     css: styles.css
     include-after-body: effects.js
     toc: false
