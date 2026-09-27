@@ -177,6 +177,21 @@ Aug. 2021 -- Jul. 2022
 
 ::: {.publication-card}
 ::: {.publication-meta}
+<span class="publication-type">CONFERENCE</span><span>NeurIPS 2026</span>
+:::
+
+### OmniDiMM: Bridging 1D, 2D, and 3D with Any-to-Any Multimodal Modeling
+
+Jason Toskov<sup>*</sup>, Oriol Barbany<sup>*</sup>, Rishubh Singh<sup>*</sup>, **Jinya Sakurai**, et al.
+
+::: {.publication-links}
+<a class="publication-link" href="https://omnidimm.epfl.ch/"><i class="bi bi-globe2"></i><span>Project</span></a>
+<a class="publication-link" href="https://omnidimm.epfl.ch/assets/OmniDiMM_ArXiv_Release.pdf"><i class="bi bi-file-earmark-pdf"></i><span>Paper</span></a>
+:::
+:::
+
+::: {.publication-card}
+::: {.publication-meta}
 <span class="publication-type">PREPRINT</span><span>2026</span>
 :::
 
@@ -207,23 +222,9 @@ Aug. 2021 -- Jul. 2022
 
 ::: {.publication-card}
 ::: {.publication-meta}
-<span class="publication-type">CONFERENCE</span><span>NeurIPS 2026</span>
-:::
-
-### OmniDiMM: Bridging 1D, 2D, and 3D with Any-to-Any Multimodal Modeling
-
-Jason Toskov<sup>*</sup>, Oriol Barbany<sup>*</sup>, Rishubh Singh<sup>*</sup>, **Jinya Sakurai**, et al.
-
-::: {.publication-links}
-<a class="publication-link" href="https://omnidimm.epfl.ch/"><i class="bi bi-globe2"></i><span>Project</span></a>
-<a class="publication-link" href="https://omnidimm.epfl.ch/assets/OmniDiMM_ArXiv_Release.pdf"><i class="bi bi-file-earmark-pdf"></i><span>Paper</span></a>
-:::
-:::
-
-::: {.publication-card}
-::: {.publication-meta}
 <span class="publication-type">CONFERENCE</span><span>JSAI 2022</span>
 :::
+
 
 ### Surface Reconstruction from Raw Point Cloud via Energy-Based Models
 
