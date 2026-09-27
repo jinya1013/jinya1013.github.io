@@ -1,26 +1,5 @@
 [
   {
-    "objectID": "publications.html",
-    "href": "publications.html",
-    "title": "Publications",
-    "section": "",
-    "text": "RESEARCH OUTPUT\n\nSelected papers and accompanying resources. Links to project pages, code, and papers are shown when publicly available."
-  },
-  {
-    "objectID": "publications.html#section",
-    "href": "publications.html#section",
-    "title": "Publications",
-    "section": "2026",
-    "text": "2026\n\n\nPREPRINT2026\n\n\nSimplex Relaxation for Discrete Diffusion\nJinya Sakurai, Patrick Pynadath, Satoshi Hayakawa, Jaehong Yoon, Xulei Yang, Nancy F. Chen, Xun Xu\nSimplax augments uniform discrete diffusion with an exact Dirichlet–categorical coupling, enabling a tractable reverse-bridge objective and stochastic sampler while preserving the original categorical corruption process.\n\nProject arXiv Paper GitHub Hugging Face\n\n\n\n\n\nPREPRINT2026\n\n\nTest-Time Scaling for Safe Text-Guided Image Generation via Intermediate Clean Estimates\nJinya Sakurai, Shueicheng Yan, Xun Xu\nA weight-preserving test-time defense for text-to-image diffusion models that detects prohibited concepts from intermediate clean image estimates and intervenes through structured low-rank residual optimization in the text-conditioning space.\n\narXiv Paper \n\n\n\n\n\nJOURNALTMLR 2026\n\n\nFairT2I: Latent Variable Guidance for Training-Free Bias Mitigation with LLM-Assisted Bias Detection\nJinya Sakurai, Yuki Koyama, Issei Sato\nFairT2I uses large language models to detect potential social bias in text-to-image generation and rebalances sensitive attributes while preserving generation quality.\n\narXiv Paper Proceedings \n\n\n\n\n\nCONFERENCENeurIPS 2026\n\n\nOmniDiMM: Bridging 1D, 2D, and 3D with Any-to-Any Multimodal Modeling\nJason Toskov, Oriol Barbany, Rishubh Singh*, Jinya Sakurai, Efe Tarhan, Oğuzhan Fatih Kar, Roman Bachmann, Amir Zadeh, Jesse Allardice, Chuan Li, Carme Torras, Afshin Dehghan, Amir Zamir\nAccepted to NeurIPS 2026. An any-to-any multimodal model that bridges 1D, 2D, and 3D representations for generation, retrieval, and object decomposition across text, images, and 3D modalities.\n\nProject Paper \n\n* Equal contribution"
-  },
-  {
-    "objectID": "publications.html#section-1",
-    "href": "publications.html#section-1",
-    "title": "Publications",
-    "section": "2022",
-    "text": "2022\n\n\nCONFERENCEJSAI 2022\n\n\nSurface Reconstruction from Raw Point Cloud via Energy-Based Models\nJinya Sakurai, Ryutaro Yamauchi, Ryo Furukawa, Tatsushi Matsubayashi\nAn energy-based approach to learning implicit surface representations from raw point clouds, designed to remain robust in the presence of point noise.\n\narXiv Paper Proceedings \n\n\n\n\n Project and GitHub buttons can be added to the same link row whenever those resources become public."
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Jinya Sakurai",
@@ -53,7 +32,7 @@
     "href": "index.html#publications",
     "title": "Jinya Sakurai",
     "section": "Publications",
-    "text": "Publications\n\n\nPREPRINT2026\n\n\nSimplex Relaxation for Discrete Diffusion\nJinya Sakurai, Patrick Pynadath, Satoshi Hayakawa, Jaehong Yoon, Xulei Yang, Nancy F. Chen, Xun Xu\n\nProject arXiv Paper\n\n\n\n\n\nCONFERENCENeurIPS 2026\n\n\nOmniDiMM: Bridging 1D, 2D, and 3D with Any-to-Any Multimodal Modeling\nJason Toskov, Oriol Barbany, Rishubh Singh*, Jinya Sakurai, et al.\n\nProject Paper\n\n\n\n\n\nPREPRINT2026\n\n\nTest-Time Scaling for Safe Text-Guided Image Generation via Intermediate Clean Estimates\nJinya Sakurai, Shueicheng Yan, Xun Xu\n\narXiv Paper\n\n\n\n\n\nJOURNALTMLR 2026\n\n\nFairT2I: Latent Variable Guidance for Training-Free Bias Mitigation with LLM-Assisted Bias Detection\nJinya Sakurai, Yuki Koyama, Issei Sato\n\narXiv Proceedings\n\n\n\n\n\nCONFERENCEJSAI 2022\n\n\nSurface Reconstruction from Raw Point Cloud via Energy-Based Models\nJinya Sakurai, Ryutaro Yamauchi, Ryo Furukawa, Tatsushi Matsubayashi\n\narXiv Paper"
+    "text": "Publications\n\n\nPREPRINT2026\n\n\nSimplex Relaxation for Discrete Diffusion\nJinya Sakurai, Patrick Pynadath, Satoshi Hayakawa, Jaehong Yoon, Xulei Yang, Nancy F. Chen, Xun Xu\n\nProject arXiv Paper GitHub Hugging Face\n\n\n\n\n\nCONFERENCENeurIPS 2026\n\n\nOmniDiMM: Bridging 1D, 2D, and 3D with Any-to-Any Multimodal Modeling\nJason Toskov, Oriol Barbany, Rishubh Singh*, Jinya Sakurai, et al.\n\nProject Paper\n\n\n\n\n\nPREPRINT2026\n\n\nTest-Time Scaling for Safe Text-Guided Image Generation via Intermediate Clean Estimates\nJinya Sakurai, Shueicheng Yan, Xun Xu\n\narXiv Paper\n\n\n\n\n\nJOURNALTMLR 2026\n\n\nFairT2I: Latent Variable Guidance for Training-Free Bias Mitigation with LLM-Assisted Bias Detection\nJinya Sakurai, Yuki Koyama, Issei Sato\n\narXiv Proceedings\n\n\n\n\n\nCONFERENCEJSAI 2022\n\n\nSurface Reconstruction from Raw Point Cloud via Energy-Based Models\nJinya Sakurai, Ryutaro Yamauchi, Ryo Furukawa, Tatsushi Matsubayashi\n\narXiv Paper"
   },
   {
     "objectID": "index.html#education",

@@ -172,6 +172,8 @@ Aug. 2021 -- Jul. 2022
 <a class="publication-link" href="simplax/"><i class="bi bi-globe2"></i><span>Project</span></a>
 <a class="publication-link" href="https://arxiv.org/abs/2608.10615"><i class="ai ai-arxiv"></i><span>arXiv</span></a>
 <a class="publication-link" href="https://arxiv.org/pdf/2608.10615"><i class="bi bi-file-earmark-pdf"></i><span>Paper</span></a>
+<a class="publication-link" href="https://github.com/jinya1013/simplax"><i class="bi bi-github"></i><span>GitHub</span></a>
+<a class="publication-link" href="https://huggingface.co/jinyas/simplax"><i class="bi bi-box-seam"></i><span>Hugging Face</span></a>
 :::
 :::
 
