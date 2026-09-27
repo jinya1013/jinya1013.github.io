@@ -128,7 +128,8 @@ Our paper *FairT2I: Mitigating Social Bias in Text-to-Image Generation via Large
 **Visiting Student with [Dr. Xun Xu](https://alex-xun-xu.github.io/)**  
 Nov. 2025 -- May 2026
 
-- Working on diffusion models.
+- Developed [Simplax: Simplex Relaxation for Discrete Diffusion](simplax/).
+- Developed [Test-Time Scaling for Safe Text-Guided Image Generation via Intermediate Clean Estimates](https://arxiv.org/abs/2608.03284).
 :::
 
 ::: {.timeline-item}
@@ -138,6 +139,7 @@ Jul. 2024 -- Nov. 2025
 
 - Developing a transformer pretrained model for 3D modalities using masked token prediction.
 - Training VQ-VAE-style tokenizers for LRM-triplane and Gaussian splatter images.
+- This work led to [OmniDiMM](https://omnidimm.epfl.ch/), accepted to NeurIPS 2026.
 :::
 
 ::: {.timeline-item}
