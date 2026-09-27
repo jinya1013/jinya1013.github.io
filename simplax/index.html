@@ -285,9 +285,44 @@
     var nfeValues = [16, 128, 1024];
     var currentNfe = 0;
     var panels = document.querySelectorAll('.owt-samples-panel');
+    var viewport = document.querySelector('.owt-samples-viewport');
     var label = document.getElementById('owt-samples-nfe');
     var previous = document.querySelector('.owt-samples-previous');
     var next = document.querySelector('.owt-samples-next');
+    var heightFrame = 0;
+
+    function syncSamplesHeight() {
+      viewport.style.removeProperty('min-height');
+      var maximumHeight = 0;
+
+      panels.forEach(function (panel) {
+        var wasHidden = panel.hidden;
+        if (wasHidden) {
+          panel.hidden = false;
+          panel.style.position = 'absolute';
+          panel.style.visibility = 'hidden';
+          panel.style.width = '100%';
+          panel.style.pointerEvents = 'none';
+        }
+
+        maximumHeight = Math.max(maximumHeight, panel.getBoundingClientRect().height);
+
+        if (wasHidden) {
+          panel.hidden = true;
+          panel.style.removeProperty('position');
+          panel.style.removeProperty('visibility');
+          panel.style.removeProperty('width');
+          panel.style.removeProperty('pointer-events');
+        }
+      });
+
+      viewport.style.minHeight = Math.ceil(maximumHeight) + 'px';
+    }
+
+    function scheduleSamplesHeightSync() {
+      window.cancelAnimationFrame(heightFrame);
+      heightFrame = window.requestAnimationFrame(syncSamplesHeight);
+    }
 
     function showSamples(index, direction) {
       panels[currentNfe].hidden = true;
@@ -318,6 +353,12 @@
         panel.classList.remove('slide-from-left', 'slide-from-right');
       });
     });
+
+    syncSamplesHeight();
+    window.addEventListener('resize', scheduleSamplesHeightSync);
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(scheduleSamplesHeightSync);
+    }
   })();
 
 
