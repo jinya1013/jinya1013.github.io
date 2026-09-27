@@ -513,6 +513,7 @@
 
       var touchStart = null;
       var wheelDeltaX = 0;
+      var wheelCommitted = false;
       var wheelEndTimer = 0;
       var resetTimer = 0;
       var settling = false;
@@ -531,7 +532,8 @@
       function dragContent(displacement) {
         var content = activeContent();
         if (!content) return;
-        var shift = Math.sign(displacement) * Math.min(Math.abs(displacement), 72);
+        var maxShift = Math.max(72, surface.clientWidth * 0.8);
+        var shift = Math.sign(displacement) * Math.min(Math.abs(displacement), maxShift);
         clearTimeout(resetTimer);
         content.style.transition = 'none';
         content.style.transform = 'translate3d(' + shift + 'px, 0, 0)';
@@ -659,21 +661,22 @@
         var deltaY = event.deltaY * scale;
         if (Math.abs(deltaX) < 2 || Math.abs(deltaX) < Math.abs(deltaY) * 1.15) return;
         event.preventDefault();
-        if (settling) return;
 
         clearTimeout(wheelEndTimer);
         wheelEndTimer = window.setTimeout(function () {
-          if (Math.abs(wheelDeltaX) >= 150) {
-            switchDirection(wheelDeltaX > 0 ? 1 : -1);
-          } else {
-            resetContent(true);
-          }
+          if (!wheelCommitted) resetContent(true);
           wheelDeltaX = 0;
+          wheelCommitted = false;
         }, 70);
 
+        if (settling || wheelCommitted) return;
         wheelDeltaX += deltaX;
         hideMagnifier();
         dragContent(-wheelDeltaX);
+        if (Math.abs(wheelDeltaX) >= 150) {
+          wheelCommitted = true;
+          switchDirection(wheelDeltaX > 0 ? 1 : -1);
+        }
       }, { passive: false });
     }
 
