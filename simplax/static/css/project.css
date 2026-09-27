@@ -182,6 +182,7 @@ body {
 }
 
 .sudoku-nfe-viewport {
+  position: relative;
   overflow: hidden;
   overscroll-behavior-x: contain;
   touch-action: pan-y;
@@ -277,6 +278,7 @@ body {
 }
 
 .owt-samples-viewport {
+  position: relative;
   overflow: hidden;
   overscroll-behavior-x: contain;
   touch-action: pan-y;

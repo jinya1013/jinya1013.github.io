@@ -513,9 +513,9 @@
 
       var touchStart = null;
       var wheelDeltaX = 0;
-      var wheelCommitted = false;
       var wheelEndTimer = 0;
       var resetTimer = 0;
+      var settling = false;
 
       function activeContent() {
         return surface.querySelector('.owt-samples-panel:not([hidden])')
@@ -559,13 +559,59 @@
       }
 
       function switchDirection(direction) {
+        if (settling) return;
+        settling = true;
         hideMagnifier();
+
+        var outgoing = activeContent();
+        var outgoingClone = outgoing.cloneNode(true);
+        outgoingClone.removeAttribute('id');
+        outgoingClone.removeAttribute('tabindex');
+        outgoingClone.setAttribute('aria-hidden', 'true');
+        outgoingClone.classList.remove('slide-from-left', 'slide-from-right');
+        outgoingClone.classList.add('swipe-outgoing');
+        outgoingClone.style.position = 'absolute';
+        outgoingClone.style.top = '0';
+        outgoingClone.style.left = '0';
+        outgoingClone.style.width = '100%';
+        outgoingClone.style.maxWidth = 'none';
+        outgoingClone.style.margin = '0';
+        outgoingClone.style.pointerEvents = 'none';
+        outgoingClone.style.zIndex = '2';
+        outgoingClone.style.transition = 'none';
+        surface.appendChild(outgoingClone);
+
         resetContent(false);
         (direction > 0 ? next : previous).click();
+
+        var incoming = activeContent();
+        incoming.classList.remove('slide-from-left', 'slide-from-right');
+        incoming.style.animation = 'none';
+        incoming.style.transition = 'none';
+        incoming.style.transform = 'translate3d(' + (direction > 0 ? '100%' : '-100%') + ', 0, 0)';
+        incoming.style.opacity = '0.9';
+
+        surface.offsetWidth;
+        var transition = 'transform 280ms cubic-bezier(0.22, 1, 0.36, 1), opacity 220ms ease';
+        outgoingClone.style.transition = transition;
+        incoming.style.transition = transition;
+        outgoingClone.style.transform = 'translate3d(' + (direction > 0 ? '-100%' : '100%') + ', 0, 0)';
+        outgoingClone.style.opacity = '0.85';
+        incoming.style.transform = 'translate3d(0, 0, 0)';
+        incoming.style.opacity = '1';
+
+        window.setTimeout(function () {
+          outgoingClone.remove();
+          incoming.style.removeProperty('animation');
+          incoming.style.removeProperty('transition');
+          incoming.style.removeProperty('transform');
+          incoming.style.removeProperty('opacity');
+          settling = false;
+        }, 300);
       }
 
       surface.addEventListener('touchstart', function (event) {
-        if (event.touches.length !== 1 || event.target.closest('a, button')) {
+        if (settling || event.touches.length !== 1 || event.target.closest('a, button')) {
           touchStart = null;
           return;
         }
@@ -595,6 +641,7 @@
         var deltaY = touch.clientY - touchStart.y;
         touchStart = null;
         if (Math.abs(deltaX) >= 72 && Math.abs(deltaX) >= Math.abs(deltaY) * 1.2) {
+          dragContent(deltaX);
           switchDirection(deltaX < 0 ? 1 : -1);
         } else {
           resetContent(true);
@@ -612,22 +659,21 @@
         var deltaY = event.deltaY * scale;
         if (Math.abs(deltaX) < 2 || Math.abs(deltaX) < Math.abs(deltaY) * 1.15) return;
         event.preventDefault();
+        if (settling) return;
 
         clearTimeout(wheelEndTimer);
         wheelEndTimer = window.setTimeout(function () {
-          if (!wheelCommitted) resetContent(true);
+          if (Math.abs(wheelDeltaX) >= 150) {
+            switchDirection(wheelDeltaX > 0 ? 1 : -1);
+          } else {
+            resetContent(true);
+          }
           wheelDeltaX = 0;
-          wheelCommitted = false;
         }, 70);
 
-        if (wheelCommitted) return;
         wheelDeltaX += deltaX;
         hideMagnifier();
         dragContent(-wheelDeltaX);
-        if (Math.abs(wheelDeltaX) >= 150) {
-          wheelCommitted = true;
-          switchDirection(wheelDeltaX > 0 ? 1 : -1);
-        }
       }, { passive: false });
     }
 
