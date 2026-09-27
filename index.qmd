@@ -219,6 +219,7 @@ Jason Toskov<sup>*</sup>, Oriol Barbany<sup>*</sup>, Rishubh Singh<sup>*</sup>, 
 ::: {.publication-links}
 <a class="publication-link" href="https://arxiv.org/abs/2502.03826"><i class="ai ai-arxiv"></i><span>arXiv</span></a>
 <a class="publication-link" href="https://openreview.net/forum?id=WHYE1WjMYf"><i class="bi bi-building"></i><span>Proceedings</span></a>
+<a class="publication-link" href="https://github.com/jinya1013/fairt2i"><i class="bi bi-github"></i><span>GitHub</span></a>
 :::
 :::
 
