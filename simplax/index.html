@@ -130,10 +130,78 @@
     <div class="content has-text-centered section-intro">
       <p>Simplax lies on or near the lower generative perplexity–entropy envelope across inference budgets. With UDLM initialization, it achieves the strongest matched-entropy perplexity among the compared diffusion methods at low and high NFE under both reported evaluators.</p>
     </div>
-    <figure class="publication-figure">
-      <img src="../assets/simplax/openwebtext.webp" alt="OpenWebText generative perplexity versus entropy frontiers from 8 to 1024 function evaluations.">
-      <figcaption>Llama-2 7B generative frontiers on OpenWebText. Lower perplexity is better at comparable entropy; the dotted vertical line marks the data entropy.</figcaption>
+    <figure class="publication-figure curve-carousel" aria-label="OpenWebText evaluator comparison">
+      <div class="curve-carousel-model" aria-live="polite">
+        <span>Perplexity evaluator</span>
+        <strong id="owt-curve-model">Llama-2 7B</strong>
+      </div>
+      <div class="curve-carousel-stage">
+        <button class="curve-carousel-button curve-carousel-previous" type="button" aria-label="Show previous evaluator: GPT-2 XL">
+          <span aria-hidden="true">&#9664;</span>
+        </button>
+        <div class="curve-carousel-viewport" tabindex="0" role="button" aria-label="Click or press Enter to magnify the graph. Double-click or press Escape to close the magnifier.">
+          <img id="owt-curve" src="../assets/simplax/openwebtext.webp" alt="Llama-2 7B OpenWebText generative perplexity versus entropy frontiers from 8 to 1024 function evaluations.">
+          <div class="curve-magnifier" aria-hidden="true"></div>
+        </div>
+        <button class="curve-carousel-button curve-carousel-next" type="button" aria-label="Show next evaluator: GPT-2 Large">
+          <span aria-hidden="true">&#9654;</span>
+        </button>
+      </div>
+      <p class="curve-magnifier-hint"><span aria-hidden="true">&#128269;</span> Click or drag to magnify · Double-click to close</p>
+      <figcaption id="owt-curve-caption" aria-live="polite">Llama-2 7B generative frontiers on OpenWebText. Lower perplexity is better at comparable entropy; the dotted vertical line marks the data entropy.</figcaption>
     </figure>
+    <div class="owt-samples-section">
+      <h3 class="title is-4 has-text-centered">Generated Text Samples</h3>
+      <div class="content has-text-centered section-intro">
+        <p>Representative unconditional generations selected at the temperature whose unigram entropy is closest to the OpenWebText entropy of 5.44. Text is shown without manual rewriting and truncated at <span class="sample-truncation">[…]</span>.</p>
+      </div>
+      <div class="owt-samples-carousel">
+        <div class="curve-carousel-model" aria-live="polite">
+          <span>Sampling budget</span>
+          <strong id="owt-samples-nfe">NFE = 16</strong>
+        </div>
+        <div class="owt-samples-stage">
+          <button class="curve-carousel-button owt-samples-previous" type="button" aria-label="Show previous sampling budget: NFE 1024">
+            <span aria-hidden="true">&#9664;</span>
+          </button>
+          <div class="owt-samples-viewport">
+            <div class="owt-samples-panel" data-nfe="16">
+              <article class="generation-card"><header><strong>CANDI</strong><span>Entropy 5.44</span></header><p>July on our records and the song in July, and we're signing people just for the next album, but it didn't couple with laser or anything. I had just a video. I thought they were crazy, because there were a lot of people out there who did it right. They felt like it was completely under my radar. <span class="sample-truncation">[…]</span></p></article>
+              <article class="generation-card"><header><strong>UDLM</strong><span>Entropy 5.53</span></header><p>What with talk of a new bus un the altitude in the first place. In South Bend in November came the focus upon new cyclists -- with an being builder. The other duck, Alabama. In total at least 82 bikes were donated to the department. <span class="sample-truncation">[…]</span></p></article>
+              <article class="generation-card"><header><strong>MDLM</strong><span>Entropy 5.43</span></header><p>Select Rally and Comm Rally was a great game with strong designed scenarios, but I did think about no-one should play it as middle of the road. You've already started to love my opinion on Two vs Two. You should check it, and stick and play this once again! We again stack you. This is the final year for the year. <span class="sample-truncation">[…]</span></p></article>
+              <article class="generation-card"><header><strong>Duo</strong><span>Entropy 5.45</span></header><p>I ever thought that it would be torrent be progression to try something new like my team base's football department. While I would have been optimistic about both the br of young players that hockey at the University at which went down in international football over the last of years and the way paths kept me focused so well I was pretty. <span class="sample-truncation">[…]</span></p></article>
+              <article class="generation-card"><header><strong>FLM</strong><span>Entropy 5.58</span></header><p>Dec 16, 2015 Edit: I cant let my reader now clear that this painting looks like a collegecommunication.'' On Z. Thanks the box. that by the way I am out over to the river to buy your best chance to date for such a horrible year. But at which point after year they release the windows of 3,100 by 11 inches. St. <span class="sample-truncation">[…]</span></p></article>
+              <article class="generation-card"><header><strong>LangFlow</strong><span>Entropy 5.42</span></header><p>God, will thrive. No others, and not at all, will determine our faith. We live in transient despair. But we don't know how to do it tomorrow. We want to live. We are sinners, we do not have God. God. we have identified the freedom of the one Being, is made to the only kind that governs our nation. <span class="sample-truncation">[…]</span></p></article>
+              <article class="generation-card"><header><strong>S-FLM</strong><span>Entropy 5.45</span></header><p>I feel like, how much does that have to work out there? Are you going into a different development company? I think speaking about the timing and the reputation of what I mean as something that have really enjoyed my career doing. I kind of think the company can change things. <span class="sample-truncation">[…]</span></p></article>
+              <article class="generation-card generation-card-simplax"><header><strong>Simplax</strong><span>Entropy 5.46</span></header><p>It was basically a percentage league, is there going to have to be one a year? They always were because they had them. If they knew that rule, they got to play one for their bodies. Then, when they voted for a “bolt 1” rule and what they got was, they want the fifth best defender to attack you, so they added <span class="sample-truncation">[…]</span></p></article>
+            </div>
+            <div class="owt-samples-panel" data-nfe="128" hidden>
+              <article class="generation-card"><header><strong>CANDI</strong><span>Entropy 5.43</span></header><p>I think they should hear about their jobs more than they think. They know that they to hear about a huge percentage of young adult Americans that are helping create jobs. I realize that what our advisors and architects believe is true. They're in fact engaging in those American jobs, whether or not they've been doing it for several years. <span class="sample-truncation">[…]</span></p></article>
+              <article class="generation-card"><header><strong>UDLM</strong><span>Entropy 5.50</span></header><p>The show has been going on for years, and people who tell the community about the end, and what way it works are already very exciting. But it is difficult to know whether you will disagree, even whether you feel the show expects a lot. So tell other friends and friends who are just around you, the producers and the media what <span class="sample-truncation">[…]</span></p></article>
+              <article class="generation-card"><header><strong>MDLM</strong><span>Entropy 5.45</span></header><p>It's been difficult times with, for me and Brett. It's important to tackle this issue on the long haul. I plan on putting it on hold again once I have my business, but committed to showing up again by the deadline. There's a lot of effort involved in an issue about a loan for $20k, and it was in the middle, I <span class="sample-truncation">[…]</span></p></article>
+              <article class="generation-card"><header><strong>Duo</strong><span>Entropy 5.44</span></header><p>America's social justice system. The ability of America's people to deal with those that are alike and those different is unclear. But when tough and bad, the outcomes are not very different.'' Congressman Kathy Lee interviewed for this article told me what she called her priority business when serving as lieutenant senator of New York. <span class="sample-truncation">[…]</span></p></article>
+              <article class="generation-card"><header><strong>FLM</strong><span>Entropy 5.43</span></header><p>I think that we would have to bring back aggression by the usual course, with war with the past, on a situation. If it was done, the fascists were inside them or there was nobody stirred up. People were part of the invasion by the Nazis, then they shot, they went on. <span class="sample-truncation">[…]</span></p></article>
+              <article class="generation-card"><header><strong>LangFlow</strong><span>Entropy 5.42</span></header><p>The body bloates with a layer of wood, black air that brings in your skin and exites aging. When reading about your life in the late 90s, what was the puzzle you were plotting in your life? I wanted to tell the secret of being an ideal person, and that everything that relies on that secret still exists. <span class="sample-truncation">[…]</span></p></article>
+              <article class="generation-card"><header><strong>S-FLM</strong><span>Entropy 5.43</span></header><p>“You,” asked Reeves, who had a light conversation with her. “You shouldn't sell a media conference. You have been around for weeks and you haven't come out to 83 game,” Khanco said, “WHAT?” “Foreby, you have been making a fortune with free agency!” she replied. “I have to wonder what it was your secret. I plan to write everything with this team. <span class="sample-truncation">[…]</span></p></article>
+              <article class="generation-card generation-card-simplax"><header><strong>Simplax</strong><span>Entropy 5.45</span></header><p>“I thought it was odd,” Anna told me. “I wanted to know,” Elsa said nervously. It's a lovely thing when you use words the way they mean something. You seem to like it. A lot.” That was nice. “It needed to be answered,” Anna said. “I just didn't say it since I grew up.” I said. <span class="sample-truncation">[…]</span></p></article>
+            </div>
+            <div class="owt-samples-panel" data-nfe="1024" hidden>
+              <article class="generation-card"><header><strong>CANDI</strong><span>Entropy 5.46</span></header><p>Tip: Every single mistake you face, you don't pay for it all the time. This is lost confidence. Of course, in this article, you want to be booking your own grooming option, just to pay at your local time schedule. You have to have a monthly with the brand Indigo Tattoo Shop for the monthly fee. <span class="sample-truncation">[…]</span></p></article>
+              <article class="generation-card"><header><strong>UDLM</strong><span>Entropy 5.45</span></header><p>Yeah: That's what I understand... and I'd presumably have come on board. I think it would be foolish to give something to him, but I guess he wouldn't want to write them, because he'd actually want it to remain in front of him for a few years. <span class="sample-truncation">[…]</span></p></article>
+              <article class="generation-card"><header><strong>MDLM</strong><span>Entropy 5.44</span></header><p>No last of the songs have been put together -- we really want the whole development going. I really hope it turns out, or the clock falls on its own itself, and if we start putting them together, things will just blow up almost completely. That's pretty scary. This will be our first time back in the studio. <span class="sample-truncation">[…]</span></p></article>
+              <article class="generation-card"><header><strong>Duo</strong><span>Entropy 5.43</span></header><p>If for rats and pies. I've been digging for a hard break. With Ann -- she'd have a long, bitter it by trying on. It never got there, I- She was just shy of puberty or a man. I wouldn't even want to tell my grandmother what was going on in her life. Those things went somewhere, baby. <span class="sample-truncation">[…]</span></p></article>
+              <article class="generation-card"><header><strong>FLM</strong><span>Entropy 5.45</span></header><p>There can be something if you don't know you're someones not squad, that's got an entirely different breed but neither do instinctively believe what or everyone born with will do the thing. There are some of that kind of good will. You only do that stuff for nothing but fun. <span class="sample-truncation">[…]</span></p></article>
+              <article class="generation-card"><header><strong>LangFlow</strong><span>Entropy 5.41</span></header><p>50. “My messy experience is everything” he said.” Something that has been on for all my life, and I think I'm living with it, but that's tough when I start losing people's attention.” He said he had accepted divorce for most of his family's care because he now relies on current degree's rent, healthcare, and social assistance children. <span class="sample-truncation">[…]</span></p></article>
+              <article class="generation-card"><header><strong>S-FLM</strong><span>Entropy 5.45</span></header><p>I can't say no they. She's definitely a stockwoman. She's got a huge attitude. We don't make her look her the way she's someone that's popular. There's just a hint of that.'' If you would give us more time to the public on our #1 gender department, you can tell us your thoughts in the comments below. <span class="sample-truncation">[…]</span></p></article>
+              <article class="generation-card generation-card-simplax"><header><strong>Simplax</strong><span>Entropy 5.44</span></header><p>How could I take it to him? Would I have a chat in my life? I didn't freak out. Even still, he did not have enough strength, and I was only millimeters away, and not even touching his chador. Only a rag with lain liquid it around his hair, and he could feel the innocence of a Playboy. <span class="sample-truncation">[…]</span></p></article>
+            </div>
+          </div>
+          <button class="curve-carousel-button owt-samples-next" type="button" aria-label="Show next sampling budget: NFE 128">
+            <span aria-hidden="true">&#9654;</span>
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -143,6 +211,29 @@
     <div class="content has-text-centered section-intro">
       <p>All models are trained only on 30-clue puzzles. Simplax obtains the highest conditional accuracy at every tested clue density and reaches 95.30% validity in unconditional generation.</p>
     </div>
+    <h3 class="title is-4 has-text-centered sudoku-result-title">NFE–Accuracy Comparison</h3>
+    <div class="content has-text-centered section-intro">
+      <p>All models are trained on 30-clue puzzles. Across inference-time clue counts, Simplax maintains strong performance even at low NFE.</p>
+    </div>
+    <figure class="publication-figure few-step-figure sudoku-nfe-carousel" aria-label="Sudoku accuracy comparison by inference-time clue count">
+      <div class="curve-carousel-model" aria-live="polite">
+        <span>Inference-time clues</span>
+        <strong id="sudoku-nfe-clues">30</strong>
+      </div>
+      <div class="sudoku-nfe-stage">
+        <button class="curve-carousel-button sudoku-nfe-previous" type="button" aria-label="Show previous inference setting: 25 clues">
+          <span aria-hidden="true">&#9664;</span>
+        </button>
+        <div class="sudoku-nfe-viewport">
+          <img id="sudoku-nfe-image" src="../assets/simplax/sudoku-few-steps.webp" alt="Sudoku generation accuracy versus NFE with 30 inference-time clues.">
+        </div>
+        <button class="curve-carousel-button sudoku-nfe-next" type="button" aria-label="Show next inference setting: 35 clues">
+          <span aria-hidden="true">&#9654;</span>
+        </button>
+      </div>
+      <figcaption id="sudoku-nfe-caption" aria-live="polite">Accuracy versus NFE with 30 clues for both training and inference.</figcaption>
+    </figure>
+    <h3 class="title is-4 has-text-centered sudoku-result-title qualitative-title">Qualitative Samples</h3>
     <div class="columns is-centered">
       <div class="column is-four-fifths">
         <figure class="publication-figure sudoku-figure">
@@ -180,6 +271,229 @@
 </footer>
 
 <script>
+  (function () {
+    var nfeValues = [16, 128, 1024];
+    var currentNfe = 0;
+    var panels = document.querySelectorAll('.owt-samples-panel');
+    var label = document.getElementById('owt-samples-nfe');
+    var previous = document.querySelector('.owt-samples-previous');
+    var next = document.querySelector('.owt-samples-next');
+
+    function showSamples(index, direction) {
+      panels[currentNfe].hidden = true;
+      panels[currentNfe].classList.remove('slide-from-left', 'slide-from-right');
+      currentNfe = (index + nfeValues.length) % nfeValues.length;
+
+      var panel = panels[currentNfe];
+      var previousNfe = nfeValues[(currentNfe - 1 + nfeValues.length) % nfeValues.length];
+      var nextNfe = nfeValues[(currentNfe + 1) % nfeValues.length];
+
+      panel.hidden = false;
+      panel.classList.remove('slide-from-left', 'slide-from-right');
+      void panel.offsetWidth;
+      panel.classList.add(direction === 'left' ? 'slide-from-left' : 'slide-from-right');
+      label.textContent = 'NFE = ' + nfeValues[currentNfe];
+      previous.setAttribute('aria-label', 'Show previous sampling budget: NFE ' + previousNfe);
+      next.setAttribute('aria-label', 'Show next sampling budget: NFE ' + nextNfe);
+    }
+
+    previous.addEventListener('click', function () {
+      showSamples(currentNfe - 1, 'left');
+    });
+    next.addEventListener('click', function () {
+      showSamples(currentNfe + 1, 'right');
+    });
+    panels.forEach(function (panel) {
+      panel.addEventListener('animationend', function () {
+        panel.classList.remove('slide-from-left', 'slide-from-right');
+      });
+    });
+  })();
+
+
+  (function () {
+    var results = [
+      { clues: 25, src: '../assets/simplax/sudoku-nfe-25.webp' },
+      { clues: 30, src: '../assets/simplax/sudoku-few-steps.webp' },
+      { clues: 35, src: '../assets/simplax/sudoku-nfe-35.webp' },
+      { clues: 40, src: '../assets/simplax/sudoku-nfe-40.webp' }
+    ];
+    var currentResult = 1;
+    var image = document.getElementById('sudoku-nfe-image');
+    var clues = document.getElementById('sudoku-nfe-clues');
+    var caption = document.getElementById('sudoku-nfe-caption');
+    var previous = document.querySelector('.sudoku-nfe-previous');
+    var next = document.querySelector('.sudoku-nfe-next');
+
+    function showResult(index, direction) {
+      currentResult = (index + results.length) % results.length;
+      var result = results[currentResult];
+      var previousResult = results[(currentResult - 1 + results.length) % results.length];
+      var nextResult = results[(currentResult + 1) % results.length];
+
+      image.src = result.src;
+      image.alt = 'Sudoku generation accuracy versus NFE with ' + result.clues + ' inference-time clues.';
+      clues.textContent = result.clues;
+      caption.textContent = result.clues === 30
+        ? 'Accuracy versus NFE with 30 clues for both training and inference.'
+        : 'Accuracy versus NFE with ' + result.clues + ' inference-time clues; all models are trained on 30-clue puzzles.';
+      previous.setAttribute('aria-label', 'Show previous inference setting: ' + previousResult.clues + ' clues');
+      next.setAttribute('aria-label', 'Show next inference setting: ' + nextResult.clues + ' clues');
+
+      image.classList.remove('slide-from-left', 'slide-from-right');
+      void image.offsetWidth;
+      image.classList.add(direction === 'left' ? 'slide-from-left' : 'slide-from-right');
+    }
+
+    previous.addEventListener('click', function () {
+      showResult(currentResult - 1, 'left');
+    });
+    next.addEventListener('click', function () {
+      showResult(currentResult + 1, 'right');
+    });
+    image.addEventListener('animationend', function () {
+      image.classList.remove('slide-from-left', 'slide-from-right');
+    });
+
+    results.forEach(function (result) {
+      var preload = new Image();
+      preload.src = result.src;
+    });
+  })();
+
+  (function () {
+    var curves = [
+      {
+        name: 'GPT-2 Large',
+        src: '../assets/simplax/openwebtext-gpt2-large.webp'
+      },
+      {
+        name: 'GPT-2 XL',
+        src: '../assets/simplax/openwebtext-gpt2-xl.webp'
+      },
+      {
+        name: 'Llama-2 7B',
+        src: '../assets/simplax/openwebtext.webp'
+      }
+    ];
+    var currentCurve = 2;
+    var image = document.getElementById('owt-curve');
+    var model = document.getElementById('owt-curve-model');
+    var caption = document.getElementById('owt-curve-caption');
+    var previous = document.querySelector('.curve-carousel-previous');
+    var next = document.querySelector('.curve-carousel-next');
+    var viewport = document.querySelector('.curve-carousel-viewport');
+    var magnifier = document.querySelector('.curve-magnifier');
+    var magnifierActive = false;
+    var magnifierZoom = 2.5;
+
+    function hideMagnifier() {
+      magnifierActive = false;
+      magnifier.classList.remove('is-visible');
+      viewport.classList.remove('is-magnifying');
+    }
+
+    function moveMagnifier(clientX, clientY) {
+      var bounds = viewport.getBoundingClientRect();
+      var radius = magnifier.offsetWidth / 2;
+      var sourceX = Math.max(radius / magnifierZoom, Math.min(clientX - bounds.left, bounds.width - radius / magnifierZoom));
+      var sourceY = Math.max(radius / magnifierZoom, Math.min(clientY - bounds.top, bounds.height - radius / magnifierZoom));
+      var lensX = Math.max(radius, Math.min(clientX - bounds.left, bounds.width - radius));
+      var lensY = Math.max(radius, Math.min(clientY - bounds.top, bounds.height - radius));
+
+      magnifier.style.left = lensX + 'px';
+      magnifier.style.top = lensY + 'px';
+      magnifier.style.backgroundImage = 'url("' + image.currentSrc + '")';
+      magnifier.style.backgroundSize = (bounds.width * magnifierZoom) + 'px ' + (bounds.height * magnifierZoom) + 'px';
+      magnifier.style.backgroundPosition = (radius - sourceX * magnifierZoom) + 'px ' + (radius - sourceY * magnifierZoom) + 'px';
+    }
+
+    function showMagnifier(clientX, clientY) {
+      magnifierActive = true;
+      viewport.classList.add('is-magnifying');
+      magnifier.classList.add('is-visible');
+      moveMagnifier(clientX, clientY);
+    }
+
+    viewport.addEventListener('pointerdown', function (event) {
+      showMagnifier(event.clientX, event.clientY);
+    });
+
+    viewport.addEventListener('pointermove', function (event) {
+      if (magnifierActive) {
+        moveMagnifier(event.clientX, event.clientY);
+      }
+    });
+
+    viewport.addEventListener('dblclick', function (event) {
+      event.preventDefault();
+      hideMagnifier();
+    });
+
+    viewport.addEventListener('pointerleave', function (event) {
+      if (event.pointerType === 'mouse') {
+        hideMagnifier();
+      }
+    });
+
+    viewport.addEventListener('keydown', function (event) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        var bounds = viewport.getBoundingClientRect();
+        showMagnifier(bounds.left + bounds.width / 2, bounds.top + bounds.height / 2);
+      } else if (event.key === 'Escape') {
+        hideMagnifier();
+      }
+    });
+
+    document.addEventListener('pointerdown', function (event) {
+      if (!viewport.contains(event.target)) {
+        hideMagnifier();
+      }
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        hideMagnifier();
+      }
+    });
+
+    function showCurve(index, direction) {
+      hideMagnifier();
+      currentCurve = (index + curves.length) % curves.length;
+      var curve = curves[currentCurve];
+      var previousCurve = curves[(currentCurve - 1 + curves.length) % curves.length];
+      var nextCurve = curves[(currentCurve + 1) % curves.length];
+
+      image.src = curve.src;
+      image.alt = curve.name + ' OpenWebText generative perplexity versus entropy frontiers from 8 to 1024 function evaluations.';
+      model.textContent = curve.name;
+      caption.textContent = curve.name + ' generative frontiers on OpenWebText. Lower perplexity is better at comparable entropy; the dotted vertical line marks the data entropy.';
+      previous.setAttribute('aria-label', 'Show previous evaluator: ' + previousCurve.name);
+      next.setAttribute('aria-label', 'Show next evaluator: ' + nextCurve.name);
+
+      image.classList.remove('slide-from-left', 'slide-from-right');
+      void image.offsetWidth;
+      image.classList.add(direction === 'left' ? 'slide-from-left' : 'slide-from-right');
+    }
+
+    previous.addEventListener('click', function () {
+      showCurve(currentCurve - 1, 'left');
+    });
+    next.addEventListener('click', function () {
+      showCurve(currentCurve + 1, 'right');
+    });
+
+    image.addEventListener('animationend', function () {
+      image.classList.remove('slide-from-left', 'slide-from-right');
+    });
+
+    curves.forEach(function (curve) {
+      var preload = new Image();
+      preload.src = curve.src;
+    });
+  })();
+
   (function () {
     var toggle = document.getElementById('theme-toggle');
     var icon = toggle.querySelector('.theme-toggle-icon');
