@@ -127,8 +127,21 @@
     }
 
     const navLinks = [...document.querySelectorAll(".navbar .nav-link")];
+    const contentRoot = document.querySelector("main.content");
+    const mobileLayout = window.matchMedia("(max-width: 860px)");
     let activeId = null;
     let transitionId = 0;
+
+    const syncPanelHeight = (panel) => {
+      if (!contentRoot) return;
+      if (!mobileLayout.matches || !panel) {
+        contentRoot.style.removeProperty("height");
+        return;
+      }
+      requestAnimationFrame(() => {
+        if (panel.id === activeId) contentRoot.style.height = `${panel.scrollHeight}px`;
+      });
+    };
 
     const idFromLink = (link) => {
       const url = new URL(link.href, window.location.href);
@@ -213,6 +226,7 @@
       state.target.hidden = false;
       state.target.removeAttribute("aria-hidden");
       state.target.scrollTop = 0;
+      syncPanelHeight(state.target);
       setNavState(activeId);
       if (updateHistory) history.replaceState(null, "", `#${activeId}`);
 
@@ -298,6 +312,7 @@
       next.hidden = false;
       next.removeAttribute("aria-hidden");
       next.scrollTop = 0;
+      syncPanelHeight(next);
       setNavState(id);
 
       if (updateHistory) history.replaceState(null, "", `#${id}`);
@@ -337,6 +352,16 @@
       section.setAttribute("aria-hidden", "true");
     });
 
+    if ("ResizeObserver" in window) {
+      const panelResizeObserver = new ResizeObserver(() => {
+        syncPanelHeight(activeId ? document.getElementById(activeId) : null);
+      });
+      sections.forEach((section) => panelResizeObserver.observe(section));
+    }
+    mobileLayout.addEventListener("change", () => {
+      syncPanelHeight(activeId ? document.getElementById(activeId) : null);
+    });
+
     navLinks.forEach((link) => {
       const id = idFromLink(link);
       if (!id) return;
@@ -345,6 +370,9 @@
         const currentIndex = panelIds.indexOf(activeId);
         const targetIndex = panelIds.indexOf(id);
         showPanel(id, true, true, targetIndex < currentIndex ? -1 : 1);
+        const openMenu = document.querySelector("#navbarCollapse.show");
+        const menuToggle = document.querySelector('.navbar-toggler[aria-expanded="true"]');
+        if (openMenu && menuToggle) menuToggle.click();
       });
     });
 
