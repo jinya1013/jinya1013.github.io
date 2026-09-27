@@ -155,7 +155,7 @@ Sep. 2023 -- Mar. 2024
 **Research Intern**  
 Aug. 2021 -- Jul. 2022
 
-- Developed a surface reconstruction method for noisy point clouds using energy-based generative models to improve robustness.
+- Developed [Surface Reconstruction from Raw Point Cloud via Energy-Based Models](https://arxiv.org/abs/2311.02601), improving robustness to noisy point clouds.
 :::
 :::
 
