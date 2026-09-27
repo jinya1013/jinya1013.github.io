@@ -183,6 +183,8 @@ body {
 
 .sudoku-nfe-viewport {
   overflow: hidden;
+  overscroll-behavior-x: contain;
+  touch-action: pan-y;
 }
 
 .sudoku-nfe-viewport img.slide-from-right {
@@ -276,6 +278,8 @@ body {
 
 .owt-samples-viewport {
   overflow: hidden;
+  overscroll-behavior-x: contain;
+  touch-action: pan-y;
 }
 
 .owt-samples-panel {

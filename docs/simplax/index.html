@@ -505,6 +505,138 @@
   })();
 
   (function () {
+    function enableSwipe(surfaceSelector, previousSelector, nextSelector) {
+      var surface = document.querySelector(surfaceSelector);
+      var previous = document.querySelector(previousSelector);
+      var next = document.querySelector(nextSelector);
+      if (!surface || !previous || !next) return;
+
+      var touchStart = null;
+      var wheelDeltaX = 0;
+      var wheelCommitted = false;
+      var wheelEndTimer = 0;
+      var resetTimer = 0;
+
+      function activeContent() {
+        return surface.querySelector('.owt-samples-panel:not([hidden])')
+          || surface.querySelector('img');
+      }
+
+      function hideMagnifier() {
+        var lens = surface.querySelector('.curve-magnifier');
+        if (lens) lens.classList.remove('is-visible');
+        surface.classList.remove('is-magnifying');
+      }
+
+      function dragContent(displacement) {
+        var content = activeContent();
+        if (!content) return;
+        var shift = Math.sign(displacement) * Math.min(Math.abs(displacement), 72);
+        clearTimeout(resetTimer);
+        content.style.transition = 'none';
+        content.style.transform = 'translate3d(' + shift + 'px, 0, 0)';
+        content.style.opacity = String(1 - Math.min(Math.abs(shift) / 720, 0.1));
+      }
+
+      function resetContent(animated) {
+        var content = activeContent();
+        if (!content) return;
+        clearTimeout(resetTimer);
+        if (!animated) {
+          content.style.removeProperty('transition');
+          content.style.removeProperty('transform');
+          content.style.removeProperty('opacity');
+          return;
+        }
+        content.style.transition = 'transform 160ms cubic-bezier(0.22, 1, 0.36, 1), opacity 160ms ease';
+        content.style.transform = 'translate3d(0, 0, 0)';
+        content.style.opacity = '1';
+        resetTimer = window.setTimeout(function () {
+          content.style.removeProperty('transition');
+          content.style.removeProperty('transform');
+          content.style.removeProperty('opacity');
+        }, 180);
+      }
+
+      function switchDirection(direction) {
+        hideMagnifier();
+        resetContent(false);
+        (direction > 0 ? next : previous).click();
+      }
+
+      surface.addEventListener('touchstart', function (event) {
+        if (event.touches.length !== 1 || event.target.closest('a, button')) {
+          touchStart = null;
+          return;
+        }
+        var touch = event.touches[0];
+        touchStart = { x: touch.clientX, y: touch.clientY };
+      }, { passive: true });
+
+      surface.addEventListener('touchmove', function (event) {
+        if (!touchStart || event.touches.length !== 1) return;
+        var touch = event.touches[0];
+        var deltaX = touch.clientX - touchStart.x;
+        var deltaY = touch.clientY - touchStart.y;
+        if (Math.abs(deltaX) < Math.abs(deltaY) * 1.2) return;
+        event.preventDefault();
+        hideMagnifier();
+        dragContent(deltaX);
+      }, { passive: false });
+
+      surface.addEventListener('touchend', function (event) {
+        if (!touchStart || event.changedTouches.length !== 1) {
+          touchStart = null;
+          resetContent(true);
+          return;
+        }
+        var touch = event.changedTouches[0];
+        var deltaX = touch.clientX - touchStart.x;
+        var deltaY = touch.clientY - touchStart.y;
+        touchStart = null;
+        if (Math.abs(deltaX) >= 72 && Math.abs(deltaX) >= Math.abs(deltaY) * 1.2) {
+          switchDirection(deltaX < 0 ? 1 : -1);
+        } else {
+          resetContent(true);
+        }
+      }, { passive: true });
+
+      surface.addEventListener('touchcancel', function () {
+        touchStart = null;
+        resetContent(true);
+      }, { passive: true });
+
+      surface.addEventListener('wheel', function (event) {
+        var scale = event.deltaMode === WheelEvent.DOM_DELTA_LINE ? 16 : 1;
+        var deltaX = event.deltaX * scale;
+        var deltaY = event.deltaY * scale;
+        if (Math.abs(deltaX) < 2 || Math.abs(deltaX) < Math.abs(deltaY) * 1.15) return;
+        event.preventDefault();
+
+        clearTimeout(wheelEndTimer);
+        wheelEndTimer = window.setTimeout(function () {
+          if (!wheelCommitted) resetContent(true);
+          wheelDeltaX = 0;
+          wheelCommitted = false;
+        }, 70);
+
+        if (wheelCommitted) return;
+        wheelDeltaX += deltaX;
+        hideMagnifier();
+        dragContent(-wheelDeltaX);
+        if (Math.abs(wheelDeltaX) >= 150) {
+          wheelCommitted = true;
+          switchDirection(wheelDeltaX > 0 ? 1 : -1);
+        }
+      }, { passive: false });
+    }
+
+    enableSwipe('.curve-carousel-viewport', '.curve-carousel-previous', '.curve-carousel-next');
+    enableSwipe('.owt-samples-viewport', '.owt-samples-previous', '.owt-samples-next');
+    enableSwipe('.sudoku-nfe-viewport', '.sudoku-nfe-previous', '.sudoku-nfe-next');
+  })();
+
+  (function () {
     var toggle = document.getElementById('theme-toggle');
     var icon = toggle.querySelector('.theme-toggle-icon');
     var label = toggle.querySelector('.theme-toggle-label');
