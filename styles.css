@@ -231,6 +231,8 @@ h1.title {
   padding-top: 3.3rem !important;
   padding-bottom: 1rem;
   overflow: hidden;
+  overscroll-behavior-x: none;
+  touch-action: pan-y;
 }
 
 .panel-mode .quarto-about-solana .about-entity,
@@ -291,6 +293,7 @@ h1.title {
   scrollbar-color: rgba(109, 74, 255, 0.4) transparent;
   border: 0 !important;
   outline: 0 !important;
+  background: var(--paper);
 }
 
 .panel-mode main.content > .content-panel[hidden] {

@@ -684,8 +684,148 @@ Apr.&nbsp;2019 – Sep.&nbsp;2023</p>
       });
     };
 
-    const showPanel = async (id, animated = true, updateHistory = true) => {
+    let previewState = null;
+    let previewToken = 0;
+
+    const cleanPreviewStyles = (state) => {
+      if (state.animations) {
+        state.animations.forEach((animation) => animation.cancel());
+        state.animations = null;
+      }
+      [state.current, state.target].forEach((panel) => {
+        panel.style.removeProperty("transform");
+        panel.style.removeProperty("opacity");
+        panel.style.removeProperty("z-index");
+        panel.style.removeProperty("will-change");
+      });
+      if (state.target.id !== activeId) {
+        state.target.hidden = true;
+        state.target.setAttribute("aria-hidden", "true");
+      }
+    };
+
+    const clearPreview = (animated = false) => {
+      if (!previewState) return;
+      const state = previewState;
+      const token = ++previewToken;
+
+      if (!animated || reduceMotion || !("animate" in state.current)) {
+        cleanPreviewStyles(state);
+        previewState = null;
+        return;
+      }
+
+      const width = state.current.parentElement.clientWidth;
+      const currentTransform = state.current.style.transform || "translate3d(0, 0, 0)";
+      const targetTransform = state.target.style.transform;
+      const targetRest = `translate3d(${state.direction * width}px, 0, 0)`;
+      const options = { duration: 220, easing: "cubic-bezier(0.22, 1, 0.36, 1)", fill: "both" };
+      const animations = [
+        state.current.animate([
+          { transform: currentTransform },
+          { transform: "translate3d(0, 0, 0)" }
+        ], options),
+        state.target.animate([
+          { transform: targetTransform, opacity: 1 },
+          { transform: targetRest, opacity: 0.7 }
+        ], options)
+      ];
+      state.animations = animations;
+
+      Promise.allSettled(animations.map((animation) => animation.finished)).then(() => {
+        if (token !== previewToken) return;
+        cleanPreviewStyles(state);
+        if (previewState === state) previewState = null;
+      });
+    };
+
+    const commitPreview = async (updateHistory = true) => {
+      if (!previewState) return;
+      const state = previewState;
+      const runId = ++transitionId;
+      ++previewToken;
+      activeId = state.target.id;
+
+      if (activeId === "about") decodeAbout();
+      state.current.setAttribute("aria-hidden", "true");
+      state.target.hidden = false;
+      state.target.removeAttribute("aria-hidden");
+      state.target.scrollTop = 0;
+      setNavState(activeId);
+      if (updateHistory) history.replaceState(null, "", `#${activeId}`);
+
+      if (reduceMotion || !("animate" in state.current)) {
+        cleanPreviewStyles(state);
+        previewState = null;
+        sections.forEach((section) => {
+          section.hidden = section !== state.target;
+          section.toggleAttribute("aria-hidden", section !== state.target);
+        });
+        return;
+      }
+
+      const width = state.current.parentElement.clientWidth;
+      const currentTransform = state.current.style.transform || "translate3d(0, 0, 0)";
+      const targetTransform = state.target.style.transform;
+      const options = { duration: 430, easing: "cubic-bezier(0.22, 1, 0.36, 1)", fill: "both" };
+      const animations = [
+        state.current.animate([
+          { transform: currentTransform, opacity: 1 },
+          { transform: `translate3d(${-state.direction * width}px, 0, 0)`, opacity: 0.75 }
+        ], options),
+        state.target.animate([
+          { transform: targetTransform, opacity: 1 },
+          { transform: "translate3d(0, 0, 0)", opacity: 1 }
+        ], options)
+      ];
+      state.animations = animations;
+
+      await Promise.allSettled(animations.map((animation) => animation.finished));
+      if (runId !== transitionId) return;
+      cleanPreviewStyles(state);
+      if (previewState === state) previewState = null;
+      sections.forEach((section) => {
+        section.hidden = section !== state.target;
+        section.toggleAttribute("aria-hidden", section !== state.target);
+      });
+    };
+
+    const previewPanel = (displacement) => {
+      if (!activeId || Math.abs(displacement) < 2) return;
+      const direction = displacement < 0 ? 1 : -1;
+      const currentIndex = panelIds.indexOf(activeId);
+      const targetIndex = (currentIndex + direction + panelIds.length) % panelIds.length;
+      const current = document.getElementById(activeId);
+      const target = document.getElementById(panelIds[targetIndex]);
+
+      if (previewState && previewState.direction !== direction) clearPreview(false);
+      if (!previewState) {
+        previewState = { current, target, direction };
+        target.hidden = false;
+        target.setAttribute("aria-hidden", "true");
+        target.scrollTop = 0;
+      }
+
+      const width = current.parentElement.clientWidth;
+      const peekLimit = Math.min(180, width * 0.35);
+      const shift = Math.sign(displacement) * Math.min(Math.abs(displacement), peekLimit);
+      const targetShift = direction > 0 ? width + shift : -width + shift;
+
+      current.style.transform = `translate3d(${shift}px, 0, 0)`;
+      current.style.zIndex = "2";
+      current.style.willChange = "transform";
+      target.style.transform = `translate3d(${targetShift}px, 0, 0)`;
+      target.style.opacity = "1";
+      target.style.zIndex = "1";
+      target.style.willChange = "transform";
+    };
+
+    const swipeThreshold = () => Math.min(130, Math.max(80, window.innerWidth * 0.2));
+    const trackpadThreshold = () => Math.min(180, Math.max(110, window.innerWidth * 0.18));
+
+    const showPanel = async (id, animated = true, updateHistory = true, direction = 1) => {
       if (!panelIds.includes(id) || id === activeId) return;
+      clearPreview(false);
       const runId = ++transitionId;
       const previous = activeId ? document.getElementById(activeId) : null;
       const next = document.getElementById(id);
@@ -705,9 +845,10 @@ Apr.&nbsp;2019 – Sep.&nbsp;2023</p>
         return;
       }
 
+      const offset = direction < 0 ? -72 : 72;
       const options = { duration: 520, easing: "cubic-bezier(0.65, 0, 0.35, 1)", fill: "both" };
       const motions = [next.animate([
-        { transform: "translate3d(72px, 0, 0)", opacity: 0.15 },
+        { transform: `translate3d(${offset}px, 0, 0)`, opacity: 0.15 },
         { transform: "translate3d(0, 0, 0)", opacity: 1 }
       ], options)];
 
@@ -716,7 +857,7 @@ Apr.&nbsp;2019 – Sep.&nbsp;2023</p>
         previous.setAttribute("aria-hidden", "true");
         motions.push(previous.animate([
           { transform: "translate3d(0, 0, 0)", opacity: 1 },
-          { transform: "translate3d(-72px, 0, 0)", opacity: 0.15 }
+          { transform: `translate3d(${-offset}px, 0, 0)`, opacity: 0.15 }
         ], options));
       }
 
@@ -739,13 +880,99 @@ Apr.&nbsp;2019 – Sep.&nbsp;2023</p>
       if (!id) return;
       link.addEventListener("click", (event) => {
         event.preventDefault();
-        showPanel(id);
+        const currentIndex = panelIds.indexOf(activeId);
+        const targetIndex = panelIds.indexOf(id);
+        showPanel(id, true, true, targetIndex < currentIndex ? -1 : 1);
       });
     });
 
+    const swipeSurface = panelShell || document.querySelector("main.content");
+    let touchStart = null;
+    const interactiveSelector = "a, button, input, textarea, select, [contenteditable='true'], [data-no-section-swipe]";
+
+    if (swipeSurface) {
+      swipeSurface.addEventListener("touchstart", (event) => {
+        if (event.touches.length !== 1 || event.target.closest(interactiveSelector)) {
+          touchStart = null;
+          return;
+        }
+        const touch = event.touches[0];
+        touchStart = { x: touch.clientX, y: touch.clientY, time: performance.now() };
+      }, { passive: true });
+
+      swipeSurface.addEventListener("touchmove", (event) => {
+        if (!touchStart || event.touches.length !== 1) return;
+        const touch = event.touches[0];
+        const deltaX = touch.clientX - touchStart.x;
+        const deltaY = touch.clientY - touchStart.y;
+        if (Math.abs(deltaX) < Math.abs(deltaY) * 1.15) return;
+        event.preventDefault();
+        previewPanel(deltaX);
+      }, { passive: false });
+
+      swipeSurface.addEventListener("touchend", (event) => {
+        if (!touchStart || event.changedTouches.length !== 1) {
+          touchStart = null;
+          clearPreview(true);
+          return;
+        }
+
+        const touch = event.changedTouches[0];
+        const deltaX = touch.clientX - touchStart.x;
+        const deltaY = touch.clientY - touchStart.y;
+        const elapsed = performance.now() - touchStart.time;
+        touchStart = null;
+
+        if (elapsed > 1200 || Math.abs(deltaX) < swipeThreshold() || Math.abs(deltaX) < Math.abs(deltaY) * 1.25) {
+          clearPreview(true);
+          return;
+        }
+
+        if (!previewState) previewPanel(deltaX);
+        commitPreview(true);
+      }, { passive: true });
+
+      swipeSurface.addEventListener("touchcancel", () => {
+        touchStart = null;
+        clearPreview(true);
+      }, { passive: true });
+
+      let wheelDeltaX = 0;
+      let wheelCommitted = false;
+      let wheelEndTimer = 0;
+
+      swipeSurface.addEventListener("wheel", (event) => {
+        const scale = event.deltaMode === WheelEvent.DOM_DELTA_LINE ? 16 : 1;
+        const deltaX = event.deltaX * scale;
+        const deltaY = event.deltaY * scale;
+
+        if (Math.abs(deltaX) < 2 || Math.abs(deltaX) < Math.abs(deltaY) * 1.15) return;
+        event.preventDefault();
+
+        clearTimeout(wheelEndTimer);
+        wheelEndTimer = window.setTimeout(() => {
+          if (!wheelCommitted) clearPreview(true);
+          wheelDeltaX = 0;
+          wheelCommitted = false;
+        }, 70);
+
+        if (wheelCommitted) return;
+        wheelDeltaX += deltaX;
+        previewPanel(-wheelDeltaX);
+        if (Math.abs(wheelDeltaX) >= trackpadThreshold()) {
+          wheelCommitted = true;
+          commitPreview(true);
+        }
+      }, { passive: false });
+    }
+
     window.addEventListener("hashchange", () => {
       const id = window.location.hash.slice(1);
-      if (panelIds.includes(id)) showPanel(id, true, false);
+      if (panelIds.includes(id)) {
+        const currentIndex = panelIds.indexOf(activeId);
+        const targetIndex = panelIds.indexOf(id);
+        showPanel(id, true, false, targetIndex < currentIndex ? -1 : 1);
+      }
     });
 
     const initialId = panelIds.includes(window.location.hash.slice(1)) ? window.location.hash.slice(1) : "about";
