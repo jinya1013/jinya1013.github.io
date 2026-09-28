@@ -3,9 +3,10 @@
   document.documentElement.classList.add("motion-ready");
   const glyphs = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz0123456789?!#@$%&*+=";
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const primaryDecodeDuration = 1500;
   const randomGlyph = () => glyphs[Math.floor(Math.random() * glyphs.length)];
 
-  function scrambleText(element, finalText, duration = 1450) {
+  function scrambleText(element, finalText, duration = primaryDecodeDuration) {
     if (reduceMotion) { element.textContent = finalText; return; }
     const start = performance.now();
     const tick = (now) => {
@@ -65,18 +66,32 @@
     requestAnimationFrame(denoise);
   }
 
-  function decodeElement(element, delay = 0, duration = 1700) {
-    if (!element || element.dataset.decoded === "true") return;
-    element.dataset.decoded = "true";
+  function decodeElements(elements, delay = 0, duration = primaryDecodeDuration, ordered = false) {
+    const targets = elements.filter((element) => element && element.dataset.decoded !== "true");
+    if (!targets.length) return;
+    targets.forEach((element) => { element.dataset.decoded = "true"; });
 
-    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
     const nodes = [];
-    let node;
-    while ((node = walker.nextNode())) {
-      const finalText = node.nodeValue;
-      const thresholds = [...finalText].map((char) => /\s/.test(char) ? 0 : Math.random());
-      nodes.push({ node, finalText, thresholds });
-    }
+    targets.forEach((element) => {
+      const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+      let node;
+      while ((node = walker.nextNode())) {
+        const finalText = node.nodeValue;
+        nodes.push({ node, finalText });
+      }
+    });
+
+    const decodableCount = nodes.reduce((count, item) => (
+      count + [...item.finalText].filter((char) => /[A-Za-z0-9]/.test(char)).length
+    ), 0);
+    let characterIndex = 0;
+    nodes.forEach((item) => {
+      item.thresholds = [...item.finalText].map((char) => {
+        if (!/[A-Za-z0-9]/.test(char)) return 0;
+        characterIndex += 1;
+        return ordered ? characterIndex / Math.max(decodableCount, 1) : Math.random();
+      });
+    });
 
     if (reduceMotion) return;
     const start = performance.now() + delay;
@@ -96,8 +111,8 @@
   }
 
   function decodeAbout() {
-    const paragraphs = [...document.querySelectorAll("#about > p")];
-    paragraphs.forEach((paragraph, index) => decodeElement(paragraph, 60 + index * 70, 850));
+    const elements = [document.querySelector("#about > h2"), ...document.querySelectorAll("#about > p")].filter(Boolean);
+    decodeElements(elements, 0, primaryDecodeDuration, true);
   }
 
   function initSectionPanels() {
@@ -472,7 +487,7 @@
   function init() {
     const title = document.querySelector("h1.title");
     const subtitle = document.querySelector(".subtitle");
-    if (title) scrambleText(title, title.textContent.trim(), 1500);
+    if (title) scrambleText(title, title.textContent.trim(), primaryDecodeDuration);
     if (subtitle) scrambleText(subtitle, subtitle.textContent.trim(), 1900);
     buildProfileDiffusion();
     initSectionPanels();
