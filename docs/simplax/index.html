@@ -293,6 +293,39 @@
 
     function syncSamplesHeight() {
       viewport.style.removeProperty('min-height');
+      var cards = document.querySelectorAll('.generation-card');
+      cards.forEach(function (card) {
+        card.style.removeProperty('min-height');
+      });
+
+      var maximumCardHeight = 0;
+      panels.forEach(function (panel) {
+        var wasHidden = panel.hidden;
+        if (wasHidden) {
+          panel.hidden = false;
+          panel.style.position = 'absolute';
+          panel.style.visibility = 'hidden';
+          panel.style.width = '100%';
+          panel.style.pointerEvents = 'none';
+        }
+
+        panel.querySelectorAll('.generation-card').forEach(function (card) {
+          maximumCardHeight = Math.max(maximumCardHeight, card.getBoundingClientRect().height);
+        });
+
+        if (wasHidden) {
+          panel.hidden = true;
+          panel.style.removeProperty('position');
+          panel.style.removeProperty('visibility');
+          panel.style.removeProperty('width');
+          panel.style.removeProperty('pointer-events');
+        }
+      });
+
+      cards.forEach(function (card) {
+        card.style.minHeight = Math.ceil(maximumCardHeight) + 'px';
+      });
+
       var maximumHeight = 0;
 
       panels.forEach(function (panel) {
@@ -598,6 +631,10 @@
         surface.classList.remove('is-magnifying');
       }
 
+      function panelGap() {
+        return Math.max(14, Math.min(24, surface.clientWidth * 0.04));
+      }
+
       function clearMotionStyles(content) {
         if (!content) return;
         content.style.removeProperty('transition');
@@ -655,7 +692,7 @@
         content.style.opacity = '1';
         if (neighbor) {
           neighbor.style.transition = 'none';
-          neighbor.style.transform = 'translate3d(' + (shift + direction * surface.clientWidth) + 'px, 0, 0)';
+          neighbor.style.transform = 'translate3d(' + (shift + direction * (surface.clientWidth + panelGap())) + 'px, 0, 0)';
           neighbor.style.opacity = '1';
         }
       }
@@ -678,7 +715,7 @@
         content.style.opacity = '1';
         if (neighbor) {
           neighbor.style.transition = transition;
-          neighbor.style.transform = 'translate3d(' + (direction * surface.clientWidth) + 'px, 0, 0)';
+          neighbor.style.transform = 'translate3d(' + (direction * (surface.clientWidth + panelGap())) + 'px, 0, 0)';
           neighbor.style.opacity = '1';
         }
         resetTimer = window.setTimeout(function () {
@@ -705,7 +742,7 @@
         var transition = 'transform 280ms cubic-bezier(0.22, 1, 0.36, 1), opacity 220ms ease';
         outgoing.style.transition = transition;
         incomingPreview.style.transition = transition;
-        outgoing.style.transform = 'translate3d(' + (direction > 0 ? '-100%' : '100%') + ', 0, 0)';
+        outgoing.style.transform = 'translate3d(' + (direction > 0 ? -(surface.clientWidth + panelGap()) : surface.clientWidth + panelGap()) + 'px, 0, 0)';
         incomingPreview.style.transform = 'translate3d(0, 0, 0)';
 
         window.setTimeout(function () {
