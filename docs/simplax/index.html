@@ -324,6 +324,13 @@
       heightFrame = window.requestAnimationFrame(syncSamplesHeight);
     }
 
+    viewport._createSwipeNeighbor = function (direction) {
+      var index = (currentNfe + direction + nfeValues.length) % nfeValues.length;
+      var clone = panels[index].cloneNode(true);
+      clone.hidden = false;
+      return clone;
+    };
+
     function showSamples(index, direction) {
       panels[currentNfe].hidden = true;
       panels[currentNfe].classList.remove('slide-from-left', 'slide-from-right');
@@ -375,6 +382,16 @@
     var caption = document.getElementById('sudoku-nfe-caption');
     var previous = document.querySelector('.sudoku-nfe-previous');
     var next = document.querySelector('.sudoku-nfe-next');
+    var viewport = document.querySelector('.sudoku-nfe-viewport');
+
+    viewport._createSwipeNeighbor = function (direction) {
+      var index = (currentResult + direction + results.length) % results.length;
+      var result = results[index];
+      var clone = image.cloneNode(true);
+      clone.src = result.src;
+      clone.alt = 'Sudoku generation accuracy versus NFE with ' + result.clues + ' inference-time clues.';
+      return clone;
+    };
 
     function showResult(index, direction) {
       currentResult = (index + results.length) % results.length;
@@ -437,6 +454,15 @@
     var magnifier = document.querySelector('.curve-magnifier');
     var magnifierActive = false;
     var magnifierZoom = 2.5;
+
+    viewport._createSwipeNeighbor = function (direction) {
+      var index = (currentCurve + direction + curves.length) % curves.length;
+      var curve = curves[index];
+      var clone = image.cloneNode(true);
+      clone.src = curve.src;
+      clone.alt = curve.name + ' OpenWebText generative perplexity versus entropy frontiers from 8 to 1024 function evaluations.';
+      return clone;
+    };
 
     function hideMagnifier() {
       magnifierActive = false;
@@ -558,10 +584,12 @@
       var wheelEndTimer = 0;
       var resetTimer = 0;
       var settling = false;
+      var preview = null;
+      var previewDirection = 0;
 
       function activeContent() {
-        return surface.querySelector('.owt-samples-panel:not([hidden])')
-          || surface.querySelector('img');
+        return surface.querySelector('.owt-samples-panel:not([hidden]):not(.swipe-neighbor)')
+          || surface.querySelector('img:not(.swipe-neighbor)');
       }
 
       function hideMagnifier() {
@@ -570,15 +598,66 @@
         surface.classList.remove('is-magnifying');
       }
 
+      function clearMotionStyles(content) {
+        if (!content) return;
+        content.style.removeProperty('transition');
+        content.style.removeProperty('transform');
+        content.style.removeProperty('opacity');
+        content.style.removeProperty('position');
+        content.style.removeProperty('z-index');
+      }
+
+      function removePreview() {
+        if (preview) preview.remove();
+        preview = null;
+        previewDirection = 0;
+      }
+
+      function ensurePreview(direction) {
+        if (preview && previewDirection === direction) return preview;
+        removePreview();
+        if (typeof surface._createSwipeNeighbor !== 'function') return null;
+
+        preview = surface._createSwipeNeighbor(direction);
+        previewDirection = direction;
+        preview.removeAttribute('id');
+        preview.removeAttribute('tabindex');
+        preview.removeAttribute('hidden');
+        preview.setAttribute('aria-hidden', 'true');
+        preview.classList.remove('slide-from-left', 'slide-from-right');
+        preview.classList.add('swipe-neighbor');
+        preview.style.position = 'absolute';
+        preview.style.top = '0';
+        preview.style.left = '0';
+        preview.style.width = '100%';
+        preview.style.maxWidth = 'none';
+        preview.style.margin = '0';
+        preview.style.pointerEvents = 'none';
+        preview.style.zIndex = '1';
+        preview.style.animation = 'none';
+        preview.style.transition = 'none';
+        surface.appendChild(preview);
+        return preview;
+      }
+
       function dragContent(displacement) {
         var content = activeContent();
-        if (!content) return;
-        var maxShift = Math.max(72, surface.clientWidth * 0.8);
-        var shift = Math.sign(displacement) * Math.min(Math.abs(displacement), maxShift);
+        if (!content || displacement === 0) return;
+        var direction = displacement < 0 ? 1 : -1;
+        var neighbor = ensurePreview(direction);
+        var maximum = Math.max(72, surface.clientWidth * 0.8);
+        var shift = Math.sign(displacement) * Math.min(Math.abs(displacement), maximum);
         clearTimeout(resetTimer);
+        content.style.position = 'relative';
+        content.style.zIndex = '2';
         content.style.transition = 'none';
         content.style.transform = 'translate3d(' + shift + 'px, 0, 0)';
-        content.style.opacity = String(1 - Math.min(Math.abs(shift) / 720, 0.1));
+        content.style.opacity = '1';
+        if (neighbor) {
+          neighbor.style.transition = 'none';
+          neighbor.style.transform = 'translate3d(' + (shift + direction * surface.clientWidth) + 'px, 0, 0)';
+          neighbor.style.opacity = '1';
+        }
       }
 
       function resetContent(animated) {
@@ -586,18 +665,25 @@
         if (!content) return;
         clearTimeout(resetTimer);
         if (!animated) {
-          content.style.removeProperty('transition');
-          content.style.removeProperty('transform');
-          content.style.removeProperty('opacity');
+          clearMotionStyles(content);
+          removePreview();
           return;
         }
-        content.style.transition = 'transform 160ms cubic-bezier(0.22, 1, 0.36, 1), opacity 160ms ease';
+
+        var neighbor = preview;
+        var direction = previewDirection;
+        var transition = 'transform 160ms cubic-bezier(0.22, 1, 0.36, 1), opacity 160ms ease';
+        content.style.transition = transition;
         content.style.transform = 'translate3d(0, 0, 0)';
         content.style.opacity = '1';
+        if (neighbor) {
+          neighbor.style.transition = transition;
+          neighbor.style.transform = 'translate3d(' + (direction * surface.clientWidth) + 'px, 0, 0)';
+          neighbor.style.opacity = '1';
+        }
         resetTimer = window.setTimeout(function () {
-          content.style.removeProperty('transition');
-          content.style.removeProperty('transform');
-          content.style.removeProperty('opacity');
+          clearMotionStyles(content);
+          removePreview();
         }, 180);
       }
 
@@ -607,50 +693,33 @@
         hideMagnifier();
 
         var outgoing = activeContent();
-        var outgoingClone = outgoing.cloneNode(true);
-        outgoingClone.removeAttribute('id');
-        outgoingClone.removeAttribute('tabindex');
-        outgoingClone.setAttribute('aria-hidden', 'true');
-        outgoingClone.classList.remove('slide-from-left', 'slide-from-right');
-        outgoingClone.classList.add('swipe-outgoing');
-        outgoingClone.style.position = 'absolute';
-        outgoingClone.style.top = '0';
-        outgoingClone.style.left = '0';
-        outgoingClone.style.width = '100%';
-        outgoingClone.style.maxWidth = 'none';
-        outgoingClone.style.margin = '0';
-        outgoingClone.style.pointerEvents = 'none';
-        outgoingClone.style.zIndex = '2';
-        outgoingClone.style.transition = 'none';
-        surface.appendChild(outgoingClone);
-
-        resetContent(false);
-        (direction > 0 ? next : previous).click();
-
-        var incoming = activeContent();
-        incoming.classList.remove('slide-from-left', 'slide-from-right');
-        incoming.style.animation = 'none';
-        incoming.style.transition = 'none';
-        incoming.style.transform = 'translate3d(' + (direction > 0 ? '100%' : '-100%') + ', 0, 0)';
-        incoming.style.opacity = '0.9';
+        var incomingPreview = ensurePreview(direction);
+        if (!incomingPreview) {
+          resetContent(false);
+          (direction > 0 ? next : previous).click();
+          settling = false;
+          return;
+        }
 
         surface.offsetWidth;
         var transition = 'transform 280ms cubic-bezier(0.22, 1, 0.36, 1), opacity 220ms ease';
-        outgoingClone.style.transition = transition;
-        incoming.style.transition = transition;
-        outgoingClone.style.transform = 'translate3d(' + (direction > 0 ? '-100%' : '100%') + ', 0, 0)';
-        outgoingClone.style.opacity = '0.85';
-        incoming.style.transform = 'translate3d(0, 0, 0)';
-        incoming.style.opacity = '1';
+        outgoing.style.transition = transition;
+        incomingPreview.style.transition = transition;
+        outgoing.style.transform = 'translate3d(' + (direction > 0 ? '-100%' : '100%') + ', 0, 0)';
+        incomingPreview.style.transform = 'translate3d(0, 0, 0)';
 
         window.setTimeout(function () {
-          outgoingClone.remove();
-          incoming.style.removeProperty('animation');
-          incoming.style.removeProperty('transition');
-          incoming.style.removeProperty('transform');
-          incoming.style.removeProperty('opacity');
+          clearMotionStyles(outgoing);
+          (direction > 0 ? next : previous).click();
+          var incoming = activeContent();
+          incoming.classList.remove('slide-from-left', 'slide-from-right');
+          incoming.style.animation = 'none';
+          removePreview();
+          window.requestAnimationFrame(function () {
+            incoming.style.removeProperty('animation');
+          });
           settling = false;
-        }, 300);
+        }, 290);
       }
 
       surface.addEventListener('touchstart', function (event) {
