@@ -28,7 +28,7 @@ format:
 
 ## About me {#about}
 
-I am a PhD student at College of Computing and Data Science, Nanyang Technological University under the supervision of [Prof. Jaehong Yoon](https://jaehong31.github.io/). I graduated from The University of Tokyo in March 2026. From November 2025 to May 2026, I was a visiting student at the Institute for Infocomm Research, A*STAR I2R, under the supervision of [Dr. Xun Xu](https://alex-xun-xu.github.io/).
+I am a PhD student at College of Computing and Data Science, Nanyang Technological University under the supervision of [Prof. Jaehong Yoon](https://jaehong31.github.io/). I graduated from The University of Tokyo in March 2026. I am currently undertaking a part-time research attachment at the Institute for Infocomm Research, A*STAR I2R, under the supervision of [Dr. Xun Xu](https://alex-xun-xu.github.io/).
 
 My research interests center on discrete and continuous diffusion models and their applications, including image generation, language modeling, 3D generation, and text-to-speech systems. More broadly, I am interested in generative modeling, computer vision, 3D world understanding, and statistical machine learning.
 
